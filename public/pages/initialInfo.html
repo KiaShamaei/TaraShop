@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/style_initialInfo.css">
+  <link rel="stylesheet" href="../css/persianDate.css">
+  <link rel="stylesheet" href="../css/line-awesome.min.css">
+  <link rel="stylesheet" href="../css/signIn.css">
+
+
+
+  <title>فرم اطلاعات اولیه </title>
+</head>
+
+<body>
+  <div class="container-fluid footerSignin">
+    <div class="row justify-content-center align-item-center my-md-5 ">
+
+      <div class="col-md-8 signFormRow text-center">
+        <img src="../images/Tara.png" class="my-md-2">
+        <h2 style="direction:rtl; text-align:center;" class="p-5">فرم اطلاعات اولیه </h2>
+
+        <form action="" class="needs-validation formValid" id="formInfo" name="formInfo" novalidate>
+          <div class="row text-right">
+            <div class="col-md-6 text-right">
+              <div class="form-group">
+                <label for="nameUser">نام</label>
+                <input type="text" class="form-control" id="nameUser" placeholder="نام ..." name="uname"
+                  autocomplete="off" required>
+                <div id="alertName" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-6 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> نام خانوادگی </label>
+                <input type="text" class="form-control text-right" id="familyUser" autocomplete="off"
+                  placeholder="نام خانوادگی..." name="familyUser" required>
+                <div id="alertFName" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nationalCodUser">کد ملی </label>
+                <input type="text" class="form-control fontname" id="nationalCodUser" placeholder="کد ملی ..."
+                  name="nationalCodUser" autocomplete="off" required maxlength="10">
+                <div id="alertNationalCod" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="brithdayUser"> تاریخ تولد :</label>
+                <!-- <input type="text" class="form-control hasDatepicker" id="date-id" placeholder="تاریخ تولد..." name="uname" required zid="BIRTHDATE" zcp="تاریخ تولد" onchange="fixvalidatezframe(this);"> -->
+                <input type="text" class="form-control" id="date-id" autocomplete="off" placeholder="تاریخ تولد..."
+                  name="date-id" required>
+                <div id="alertDate" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="postalCodUser">کد پستی </label>
+                <input type="text" class="form-control fontname" id="postalCodUser" maxlength="10" autocomplete="off"
+                  placeholder="کد پستی ... " name="postalCodUser" required min="1" max="11">
+                <div id="alertPosatlcode" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="emailUser"> ایمیل </label>
+                <input type="text" class="form-control" id="eUser" autocomplete="off" placeholder="ایمیل..."
+                  name="emailUser" required>
+                <div id="alertEmail" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label for="addUser">آدرس </label>
+                <textarea type="text" class="form-control fontname" id="addUser" autocomplete="off"
+                  placeholder="آدرس ..." name="addUser"></textarea>
+              </div>
+            </div>
+            <div class="col-md-6 text-">
+              <button type="submit" class="btn btn-block btn-outline-warning " id="submit">ذخیره
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid footerSignin mt-md-3">
+    <div class="row justify-content-center align-item-center ">
+      <div class="col-md-8 text-center">
+        <P class="pt-3">راهنما-</P>
+        <P>1996-2020,&#0169; taramobi.io.com, Inc. or its affiliates</P>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="../js/jquery.js"></script>
+  <script src="../js/popper.min.js"></script>
+
+  <script src="../js/build/zfjquery.js" type="text/javascript"></script>
+  <script src="../js/build/zfjquery.ui.core.js" type="text/javascript"></script>
+
+  <script src="../js/build/main.js" type="text/javascript"></script>
+  <script src="../js/build/api.js" type="text/javascript"></script>
+  <script src="../js/build/zmessage.js" type="text/javascript"></script>
+  <!--    <script src="../js/bootstrap.bundle.min.js cehnce"></script>-->
+  <script src="../js/persian-date.js"></script>
+  <script src="../js/persianDatepicker.js"></script>
+  <script src="../js/build/validFunction.js"></script>
+  <script src="../js/build/setinitialinfo.js"></script>
+
+
+</body>
+
+</html>

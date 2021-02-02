@@ -1,0 +1,156 @@
+.bg-darkD{
+    background-color: rgb(19,25,33);
+}
+.searchCountainer{
+    width: 80rem;
+    border-radius: 5px;
+    
+}
+@media  (max-width: 1400px) { 
+  .searchCountainer{
+    width: 35rem;
+    border-radius: 5px;
+}
+form.searchPart input[type=text] {  
+    width: 80%;
+    
+  }
+  .searchPartR{
+    width: 10%;
+
+  }
+  .searchPartL{
+    width: 10%;
+
+  }
+ }
+form.searchPart input[type=text] {
+  box-sizing: border-box;
+    padding: 9px;
+    font-size: 14px;
+    border-radius: 10px;
+    width: 88%;
+    border: 1px solid #f1f1f1 ;
+    background: #f1f1f1;
+  }
+
+ .searchPartR{
+    float: right;
+    width: 6%;
+    padding: 8px;
+    background: var(--yellow);
+    color: white;
+    font-size: 15px;
+    border-radius: 0 5px 5px 0 ;
+    border: 1px solid var(--yellow);
+    cursor: pointer;
+  }
+  .searchPartL {
+      float : left;
+      width: 6%;
+      padding: 9px;
+      background: var(--yellow);
+      color: white;
+      font-size: 17px;
+      border: 1px solid var(--yellow);
+      border-radius: 5px 0 0 5px ;
+      border-left: none;
+      cursor: pointer;
+  }
+  
+  form.searchPart button:hover {
+    background: var(--yellowHover);
+  }
+  
+  form.searchPart::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  /* secound menu -----*/
+  .bg-secMenu{
+    background-color:#232F3E;
+    color : #F8F8FF;
+    text-decoration: none;
+    list-style: none;
+    font: inherit;
+
+
+}
+.iconAllP{
+    position: relative;
+
+}
+.iconAll{
+    position: absolute;
+    top:2px;
+    right:0;
+    float: left;
+    font-size:16px;
+    cursor:pointer ;
+    padding-top: 5px;
+}
+
+
+/* side nav ------------------------*/
+/*sidbar navigation */
+.sidenav {
+  height: 100%;
+  width: 0px;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  background-color:  #faf8f8;
+  overflow-x: hidden;
+  transition: 0.5s;
+  
+}
+
+.sidenav a {
+  padding: 15px 15px 15px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #111;
+  display: block;
+  transition: 0.3s;
+  text-align: right;
+}
+
+.sidenav a:hover {
+  color: #474747;
+  background-color:#C1C1C1 ;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 1px;
+  right: 302px;
+  font-size: 54px;
+  color: #C1C1C1;
+  
+}
+.sidnavTop h4{
+  padding: 0;
+  margin: 0;
+
+}
+.sidnavTop p{
+  padding: 0;
+  margin: 0 !important;
+
+}
+
+.sidenavTop {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: center;
+ 
+}
+
+@media screen and (max-height: 450px) {
+ 
+  .sidenav a {font-size: 18px;}
+}

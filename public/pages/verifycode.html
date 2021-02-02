@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <link href="../css/signIn.css" rel="stylesheet">
+  <title>تایید کد ارسالی</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="text-muted">
+  <div class="container mainSignin">
+    <div class="row justify-content-center align-item-center my-md-5">
+      <div class="col-md-5 signFormRow text-center">
+        <img src="../images/Tara.png" class="my-md-2">
+        <form class="border p-5 text-right">
+          <div class="my-md-3">
+
+            <p class="p-2 text-right my-md-3 text-muted">لطفا رمز پویای ارسال شده را وارد فرمایید</p>
+            <div class="form-group ">
+              <input type="text" class="form-control text-right fontname " placeholder="کد ارسالی" id="pwd" autocomplete="off">
+            </div>
+            <button type="button" class="btn btn-warning btn-block" id="submit" onclick="check_verify()">تایید</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid footerSignin">
+    <div class="row justify-content-center align-item-center ">
+      <div class="col-md-8 text-center">
+        <P class="pt-3">راهنما-</P>
+        <P>1996-2020,&#0169; taramobi.io.com, Inc. or its affiliates</P>
+
+      </div>
+    </div>
+  </div>  
+  <script src="../js/jquery.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../bootstrap/bootstrap.min.js"></script>
+  <script src="../js/build/zfjquery.js" type="text/javascript"></script>
+  <script src="../js/build/zfjquery.ui.core.js" type="text/javascript"></script>
+  <script src="../js/build/main.js" type="text/javascript"></script>
+  <script src="../js/build/api.js" type="text/javascript"></script>
+  <script src="../js/build/zmessage.js" type="text/javascript"></script>
+
+  <script>
+    async function call_verifycode(P_verifycode) {
+      var param = [];
+      param.push({ name: 'verifycode', value: P_verifycode });
+
+      let s= await  callZf_jslib('security/verify/','verifycode',param,1); 
+      return s;
+    }
+    async function check_verify() {
+      //event.preventDefault();
+      var passCode = pwd.value;
+      let c = await call_verifycode(passCode);
+      if (c.Mid == 1) {
+        window.location.replace("/ZSHOP/SHOP/Register/initialInfo.html");
+        //alert('Accept Code')
+      }
+      else {
+        alert('deny code')
+      }
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/bootstrap.css" rel="stylesheet" >
+  <link href="../css/style_initialInfo.css" rel="stylesheet" >
+  <link href="../css/persianDate.css" rel="stylesheet" >
+  <link href="../css/font-awesome.css" rel="stylesheet">
+  <link href="../css/signIn.css" rel="stylesheet" >
+  <link href="../css/timeLine.css" rel="stylesheet" >
+  <title>فرم اطلاعات فروشگاه </title>
+</head>
+
+<body>
+  <div class="container-fluid footerSignin">
+    <div class="row justify-content-center align-item-center my-md-3 ">
+      <div class="col-md-8 signFormRow text-center">
+        <img src="../images/Tara.png" class="my-md-1">
+        <h2 style="direction:rtl; text-align:center;" class="p-2">فرم اطلاعات فروشگاه </h2>
+        <form action="" class="needs-validation formValid" id="formInfo" name="formInfo" novalidate>
+          <div class="row text-right">
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="nameUser">نام فروشگاه </label>
+                <input type="text" class="form-control" id="storName" placeholder="نام فروشگاه ..." name="uname"
+                  required autocomplete="off">
+                  <div id="storName" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> کد اقتصادی </label>
+                <input type="text" class="form-control text-right fontname" id="ecoNum" placeholder="کداقتصادی..."
+                  name="ecoNum" required autocomplete="off" maxlength="12">
+                  <div id="alertecoNum" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> کد ملی فروشگاه </label>
+                <input type="text" class="form-control text-right fontname" id="storeNcode" placeholder="کد ملی فروشگاه ..."
+                  name="storeNcode" required autocomplete="off" maxlength="12">
+                  <div id="alertstoreNcode" class="text-danger"></div>
+
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> شماره تلفن</label>
+                <input type="text" class="form-control text-right fontname" id="telStore" placeholder="تلفن ..."
+                  name="telStore" required autocomplete="off" maxlength="12">
+                  <div id="alertetelStore" class="text-danger"></div>
+                
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> شماره فکس </label>
+                <input type="text" class="form-control text-right fontname" id="faxStore" placeholder="فکس..."
+                  name="faxStore" required autocomplete="off" maxlength="12">
+                  <div id="alertfaxStore" class="text-danger"></div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="postalCodUser">کد پستی </label>
+                <input type="text" class="form-control fontname" id="postalCodStore" placeholder="کد پستی" required min="1"
+                  max="11" autocomplete="off" name="postalCodStore">
+                  <div id="alertpostalCodStore" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="emailUser"> پست لکترونیکی </label>
+                <input type="text" class="form-control" id="emailStore" placeholder="ایمیل..." name="emailStore" required
+                  autocomplete="off">
+                  <div id="alertemailStore" class="text-danger"></div>
+                
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> استان </label>
+                  <select class="form-control text-right" id="stateStore" placeholder="استان..."
+                  name="stateStore" required autocomplete="off" >
+                   
+                  </select>
+                  <div id="alertstateStore" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right">شهر </label>
+                <select type="text" class="form-control text-right" id="cityStore" placeholder="شهر..."
+                  name="cityStore"  >
+                </select>
+                  <div id="alertcityStore" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> منطقه </label>
+                <input type="text" class="form-control text-right" id="stateCityStore" placeholder="منطقه..."
+                  name="stateCityStore" required autocomplete="off">
+                  <div id="stateCityStorealert" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> پلاک</label>
+                <input type="text" class="form-control text-right" id="cityNum" placeholder="پلاک..."
+                  name="cityNum" required autocomplete="off">
+                  <div id="alertcityNum" class="text-danger"></div> 
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <div class="form-group">
+                <label for="familyUser text-right"> نوع فروشگاه </label>
+                <input type="text" class="form-control text-right" id="typeStore" placeholder="نوع فروشگاه..."
+                  name="typeStore" required autocomplete="off">
+                  <div id="alerttypeStore" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+
+              <label class="form-check-label px-2 fontname" for="timeonStore"> ساعت فعالیت    </label>
+              <div class="form-row ">
+                <div class="form-group col-6 timecontainer">
+                  <!-- <input type="number" class="form-control text-right fontname time" id="timeonStore" placeholder="از ساعت ..."
+                    name="timeonStore" required autocomplete="off"> -->
+                    
+                    <input type="number"class=" text-right  fontname time" id="timeMon"  min="0" max="59" placeholder= "از 00">:
+                    <input type="number" class=" text-right  fontname time" id="timeHon"  min="0" max="23" placeholder="23">
+                </div>
+                
+                <div class="form-group col-6 timecontainer">
+                  
+                  <!-- <input type="number" class="form-control text-right fontname time" id="timeoffStore" placeholder="تا ساعت..."
+                    name="timeoffStore" required autocomplete="off"> -->
+                   
+                    <input type="number"class=" text-right  fontname time" id="timeMoff"  min="0" max="59" placeholder="تا 00">:
+                    <input type="number" class=" text-right  fontname time" id="timeHoff"  min="0" max="23" placeholder="23">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 text-right">
+              <!-- <div class="form-check mt-md-4">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="siteIs" id="open24"
+                  value="1">
+                <label class="form-check-label px-2 fontname" for="inlineRadio1">24 ساعته</label>
+                  <input class="form-check-input" type="checkbox" name="siteIs" id="siteIs"
+                    value="1">
+                  <label class="form-check-label px-2" for="inlineRadio1">دارای سایت هستم</label>
+                 
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="col-md-6 mt-4">
+                 <label class="checkbox-container text-left fontname">24 ساعته
+                   <input type="checkbox" name="open24" id="open24"
+                   value="1">
+                   <span class="checkmark"></span>
+                 </label> 
+                </div>
+                <div class="col-md-6 mt-4 ">
+                 <label class="checkbox-container fontname">سایت دارم
+                   <input type="checkbox" name="siteIs" id="siteIs"
+                   value="1">
+                   <span class="checkmark2 checkmark"></span>
+                 </label> 
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="familyUser text-right"> آدرس سایت </label>
+                <input type="text" class="form-control text-right" id="sitStore" placeholder="سایت..."
+                  name="sitStore" required autocomplete="off" disabled="disabled">
+                  <div id="alertsitStore" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="addUser">آدرس </label>
+                <textarea type="text" class="form-control" id="addStore" placeholder="آدرس ..." name="addStore"
+                  autocomplete="off"></textarea>
+                  <div id="alertaddStore" class="text-danger"></div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-md-4">
+              <button type="submit" class="btn btn-block btn-outline-warning " id="submit">ذخیره
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid footerSignin mt-md-3">
+    <div class="row justify-content-center align-item-center ">
+      <div class="col-md-8 text-center">
+        <div id="timeline-wrap">
+          <div id="timeline"></div>
+
+          <!-- This is the individual marker-->
+          <div class="marker mfirst timeline-icon three" id="1">
+            <i class="fa fa-pencil"></i>
+          </div>
+          <!-- / marker -->
+          <!-- This is the individual marker-->
+          <div class="marker m3 timeline-icon four " id="2">
+            <i class="fa fa-list"></i>
+          </div>
+          <!-- / marker -->
+          <!-- This is the individual marker-->
+          <div class="marker mlast timeline-icon  one" id="3">
+            <i class="fa fa-check"></i>
+          </div>
+          <!-- / marker -->
+        </div>
+      </div>
+      <div class="col-md-8 text-center">
+        <P class="pt-3">راهنما-</P>
+        <P>1996-2020,&#0169; taramobi.io.com, Inc. or its affiliates</P>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="../js/jquery.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../bootstrap/bootstrap.min.js"></script>
+  <script src="../js/regenerator-runtime.js"></script>
+  <script src="../js/build/zfjquery.js" type="text/javascript"></script>
+  <script src="../js/build/zfjquery.ui.core.js" type="text/javascript"></script>
+  <script src="../js/build/main.js" type="text/javascript"></script>
+  <script src="../js/build/api.js" type="text/javascript"></script>
+  <script src="../js/build/zmessage.js" type="text/javascript"></script>
+  <script src="../js/cityCollect.js"></script>
+  <script src="../js/build/validFunction.js"></script>
+  <script src="../js/build/salerInitialInfoF.js"></script>
+
+
+</body>
+
+</html>

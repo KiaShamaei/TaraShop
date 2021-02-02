@@ -1,0 +1,22 @@
+.kia {
+  border-radius: 5px;
+  -webkit-transition: all;
+  transition: all;
+  box-sizing: border-box;
+  background-image: -webkit-linear-gradient(#FCFCFC, #fff);
+  background-image: linear-gradient(#FCFCFC, #fff);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+/*# sourceMappingURL=kia.css.map */

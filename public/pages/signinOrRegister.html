@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  <link href="../css/signIn.css" rel="stylesheet">
+  <link href="../css/font-awesome.css" rel="stylesheet">
+
+  <title>signInOrRegister</title>
+</head>
+
+<body>
+  <main>
+    <div class="container mainSignin">
+      <div class="row justify-content-center align-item-center mt-md-5">
+        <div class="col-md-5 signFormRow">
+          <img src="../images/Tara.png">
+          <div class="alertMessage" id="alertMessage">
+            <div class="inside">
+              <h3> شماره تماس یا ایمیل نادرست! </h3><span><i class="fa fa-3x fa-exclamation-triangle"></i></span>
+              <P class="text-muted">با این ایمیل و یا شماره موبایل حسابی یافت نشد دوباره امتحان کنید .</P>
+            </div>
+          </div>
+          <form class="signForm mt-3" id="formSignin">
+            <div class="form-row">
+              <div class="col-12 py-4">
+                <h2 class="font-weight-bold">ورود | ثبت نام </h2>
+                <label for="username" class="text-muted py-2"> ایمیل یا شماره تماس خود را وارد کنید .</label>
+                <div id="alertMesssage" class="text-danger"></div>
+                <input type="text" class="form-control" name="username" id="username"
+                  placeholder="ایمیل یا شماره تماس..." autocomplete="off">
+              </div>
+              
+              <div class="col-12">
+                <button type="submit" class="btn btn-warning btn-block">ادامه</button>
+              </div>
+              <span class="pt-md-4  text-muted"> در صورت نیاز به راهنمایی با ما در تماس باشید</span>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center align-item-center mt-md-4 text-muted">
+        <div class="col-md-5  ">
+          <div class="divider text-center">
+            <h2><span>ایجاد حساب جدید</span></h2>
+            <a href="./register.html"><button class="btn btn-block btn-secoundary secBtn my-md-5"> ایجاد
+                حساب</button></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+  <div class="container-fluid footerSignin">
+    <div class="row justify-content-center align-item-center ">
+      <div class="col-md-8 text-center">
+        <P class="pt-3">راهنما-</P>
+        <P> 2020-2021, taraMobile.com, Inc. or its affiliates</P>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/jquery.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../bootstrap/bootstrap.min.js"></script>
+  <script src="../js/regenerator-runtime.js"></script>
+  <script src="../js/build/zfjquery.js" type="text/javascript"></script>
+  <script src="../js/build/zfjquery.ui.core.js" type="text/javascript"></script>
+  <script src="../js/build/main.js" type="text/javascript"></script>
+  <script src="../js/build/api.js" type="text/javascript"></script>
+  <script src="../js/build/validFunction.js"></script>
+  <script src="../js/build/signinOrRegister.js"></script>
+</body>
+
+</html>

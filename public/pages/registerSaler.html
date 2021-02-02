@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/font-awesome.css" rel="stylesheet">
+    <!--must inject-->
+    <link href="../css/signIn.css" rel="stylesheet">
+    <link href="../css/timeLine.css" rel="stylesheet">
+
+    <title>ثبت نام فروشندگان</title>
+</head>
+
+<body>
+    <main>
+        <div class="container ">
+            <div class="row justify-content-center align-item-center my-md-5">
+                <div class="col-md-5 signFormRow">
+                    <img src="../images/Tara.png">
+                    <div class="alertMessage" id="alertMessage">
+                        <div class="inside">
+                            <h3> پسورد اشتباه مجدد تلاش کنید! </h3><span><i
+                                    class="fa fa-3x fa-exclamation-triangle"></i></span>
+                            <P class="text-muted">پسورد وارد شده اشتباه است تعداد خطا.</P>
+                        </div>
+                    </div>
+                    <form class="signForm my-3" id="form"  page="1">
+                        <div class="form-row">
+                            <div class="col-12 py-3">
+                                
+                                <input type="text" class="form-control" name="useremail" id="useremail"
+                                    placeholder=" ایمیل خود را وارد کنید  ..." autocomplete="off">
+                                    <div class="text-danger" id="validEmail"></div>
+                            </div>
+                            <!-- <div class="col-12 py-3 ">
+                                <input type="password" class="form-control fontname" name="userpassword"
+                                    id="userpassword" placeholder=" رمز عبور خود را انتخاب کنید  ...">
+                                <i class="fa fa-eye passIcon" id="passIcon"></i>
+
+                            </div> -->
+
+                            <div class="col-12 py-1"> 
+                                <input type="text" class="form-control fontname " name="usermobile"
+                                    id="usermobile" placeholder="شماره موبایل را وارد کنید ..." autocomplete="off" maxlength="11">
+                                    <div id="validMobile" class="text-danger"></div>
+                            </div>
+                            <div class="col-12 p-3 captchaimg">
+                                <input class="inputcaptcha text-right fontname" type="text"  placeholder=" کد امنیتی مقابل را وارد کنید ... " id="txtcaptcha" autocomplete="off">
+                                <img id="imgcaptcha" src="">
+                              </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-warning btn-block" id="submit">ثبت نام</button>
+                            </div>
+                            <div class="col-12 mt-md-3">
+                                <P class="text-muted">قبلاً ثبت نام کرده‌ام. <a href="./loginsaler.html"><span class="text-primary">ورود</span></a></P>
+                            </div>
+                            <p class="pt-md-4  text-muted"> در صورت نیاز به راهنمای با ما در<span
+                                    class="text-primary">تماس باشید </span> </p>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+    <div class="container-fluid footerSignin">
+        <div class="row justify-content-center align-item-center">
+            <div class="col-md-8 text-center">
+                <div id="timeline-wrap">
+                    <div id="timeline"></div>
+
+                    <!-- This is the individual marker-->
+                    <div class="marker mfirst timeline-icon one">
+                        <i class="fa fa-pencil"></i>
+                    </div>
+                    <!-- / marker -->
+                    <!-- This is the individual marker-->
+                    <div class="marker m3 timeline-icon three">
+                        <i class="fa fa-list"></i>
+                    </div>
+                    <!-- / marker -->
+                    <!-- This is the individual marker-->
+                    <div class="marker mlast timeline-icon four">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <!-- / marker -->
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row justify-content-center align-item-center ">
+            <div class="col-md-8 text-center">
+                <P class="pt-3">راهنما-</P>
+                <P>2020-2021,&#0169; taramobi.io.com, Inc. or its affiliates</P>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../bootstrap/bootstrap.min.js"></script>
+    <script src="../js/build/validFunction.js"></script>
+    <!--must inject-->
+    
+    <!--ZFrame_Code-->
+    <script src="../js/regenerator-runtime.js"></script>
+    <script src="../js/build/zfjquery.js" type="text/javascript"></script>
+    <script src="../js/build/zfjquery.ui.core.js" type="text/javascript"></script>
+    <script src="../js/build/main.js" type="text/javascript"></script>
+    <script src="../js/build/api.js" type="text/javascript"></script>
+    <script src="../js/build/zmessage.js" type="text/javascript"></script>
+    <script src="../js/build/registerSaler.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+#timeline-wrap {
+  margin: 5rem;
+  position: relative;
+  direction: ltr;
+}
+
+#timeline {
+  height: 1px;
+  width: 100%;
+  background-color: #aabbc4;
+  position: relative;
+}
+
+.marker {
+  z-index: 1000;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  margin-left: -25px;
+  background-color: #999999;
+  border-radius: 50%;
+}
+
+.marker:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+.timeline-icon.one {
+  background-color: #af1fdb !important;
+}
+
+.timeline-icon.two {
+  background-color: #949494 !important;
+}
+
+.timeline-icon.three {
+  background-color: #949494 !important;
+}
+
+.timeline-icon.four {
+  background-color: #949494 !important;
+}
+
+.timeline-icon i {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.timeline-icon.two i {
+  position: absolute;
+  top: 15px;
+  left: 17px;
+}
+
+.mfirst {
+  top: -25px;
+}
+
+.m2 {
+  top: -25px;
+  left: 32.5%;
+}
+
+.m3 {
+  top: -25px;
+  left: 50%;
+}
+
+.mlast {
+  top: -25px;
+  left: 100%;
+}
+
+.timeline-panel {
+  margin-top: 20%;
+  width: 500px;
+  height: 200px;
+  background-color: #cbd0df;
+  border-radius: 2px;
+  position: relative;
+  text-align: left;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  float: left;
+}
+
+.timeline-panel:after {
+  content: '';
+  position: absolute;
+  margin-top: -12%;
+  left: 10%;
+  width: 0;
+  height: 0;
+  border: 12px solid transparent;
+  border-bottom: 15px solid #cbd0df;
+}
+/*# sourceMappingURL=timeLine.css.map */
