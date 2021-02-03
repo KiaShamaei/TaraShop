@@ -117,14 +117,14 @@ function IsNumber(Number, showmessage) {
 //password validation  role accept Minimum eight characters, at least one letter and one number:
 function IsPassword (input, showmessage){
     const value=input.val();
-    const model = "^(?=.*\d)[A-Za-z\d]{8,}$";
+    const model = "^[a-zA-Z0-9]{6,}$";
     if((value.match(model)))
     {
         showmessage.html("");
         return true ;
     }else
     {
-        showmessage.html("رمز ورود باید حداقل 8 کاراکتر  باشد  ");
+        showmessage.html("رمز ورود باید حداقل 6 کاراکتر شامل عدد و حروف");
         input.focus();
         input.select();
     }

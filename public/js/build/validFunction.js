@@ -110,13 +110,13 @@ function IsNumber(Number, showmessage) {
 
 function IsPassword(input, showmessage) {
   var value = input.val();
-  var model = "^(?=.*\d)[A-Za-z\d]{8,}$";
+  var model = "^[a-zA-Z0-9]{6,}$";
 
   if (value.match(model)) {
     showmessage.html("");
     return true;
   } else {
-    showmessage.html("رمز ورود باید حداقل 8 کاراکتر  باشد  ");
+    showmessage.html("رمز ورود باید حداقل 6 کاراکتر شامل عدد و حروف");
     input.focus();
     input.select();
   }

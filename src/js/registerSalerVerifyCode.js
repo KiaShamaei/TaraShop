@@ -14,7 +14,7 @@ formSubmit.on('submit',async function(e){
     e.preventDefault();
     let c = await call_verifycode(code.val());
     if (c.Mid == 1) {
-        window.location.replace("/ZSHOP/SHOP/Register/salerInitialInfo.html");
+        window.location.replace("./salerInitialInfo.html");
         //alert('Accept Code')
     } else {
         $('#alert').html('کد وارد شده صحیح نمی باشد ')

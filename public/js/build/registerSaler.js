@@ -76,6 +76,30 @@ $(document).ready(function () {
     var showmessage = $("#validMobile");
     IsIranPhone($(this), showmessage);
   });
+}); //toggleshow password ==================================================
+//show passsword by click blink icon 
+
+var icon = document.getElementById('passIcon');
+var inputTarget = document.getElementById('userpassword');
+togglePassword(icon, inputTarget);
+var iconre = document.getElementById('repassIcon');
+var inputTargetre = document.getElementById('repassword');
+togglePassword(iconre, inputTargetre); //----check password enter be same & valid =================================
+
+$('#repassword,#userpassword').on('change', function () {
+  $('#validpassword').html('');
+});
+$('#repassword').on('change', function () {
+  if ($('#userpassword').val() == $('#repassword').val()) {
+    $('#validpassword').html('');
+    var isvalid = IsPassword($('#userpassword'), $('#validpassword'));
+
+    if (isvalid) {
+      $('#submit').removeAttr('disabled');
+    }
+  } else {
+    $('#validpassword').html('رمز وارد شده یکسان نیست ');
+  }
 }); //------------------------------------zfram api code ----------------
 
 function call_registersaler(_x2, _x3, _x4) {
@@ -83,7 +107,7 @@ function call_registersaler(_x2, _x3, _x4) {
 }
 
 function _call_registersaler() {
-  _call_registersaler = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(P_email, P_mobile, P_captcha) {
+  _call_registersaler = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(P_password, P_mobile, P_captcha) {
     var param, s;
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
@@ -91,16 +115,16 @@ function _call_registersaler() {
           case 0:
             param = [];
             param.push({
-              name: 'email',
-              value: P_email
-            });
-            param.push({
               name: 'mobile',
               value: P_mobile
             });
             param.push({
               name: 'captcha',
               value: P_captcha
+            });
+            param.push({
+              name: 'password',
+              value: P_password
             });
             _context3.next = 6;
             return callZf_jslib('activity/register/', 'registersaler', param, 2);
@@ -124,14 +148,14 @@ function Do_registersaler(_x5, _x6, _x7) {
 }
 
 function _Do_registersaler() {
-  _Do_registersaler = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(useremail, usermobile, captcha) {
+  _Do_registersaler = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(userpassword, usermobile, captcha) {
     var response;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return call_registersaler(useremail, usermobile, captcha);
+            return call_registersaler(userpassword, usermobile, captcha);
 
           case 2:
             response = _context4.sent;
@@ -152,10 +176,9 @@ function _Do_registersaler() {
 }
 
 $("#form").on("submit", function (e) {
-  var useremail = $("#useremail").val();
-  console.log(useremail);
+  var userpassword = $("#userpassword").val();
   var usermobile = $("#usermobile").val();
   var captcha = $("#txtcaptcha").val();
   e.preventDefault();
-  Do_registersaler(useremail, usermobile, captcha);
+  Do_registersaler(userpassword, usermobile, captcha);
 });
