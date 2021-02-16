@@ -84,7 +84,7 @@ $(document).ready(function () {
     }
 
     async function Do_setinitialinfo(fname, lname, ncode, birthday, postcod, email, addUser) {
-        debugger
+        
         let s = await call_setinitialinfo(fname, lname, ncode, birthday, postcod, email, addUser);
         var mid = s.Mid;
         if (mid == 1) {

@@ -112,60 +112,7 @@ $(document).ready(function () {
 
         }
     });
-    //do services
-    async function call_setinitialinfoagent(P_agent_name, P_url, P_tel, P_address, P_national_code, P_open_time, P_close_time, P_city_id) {
-        var param = [];
-        param.push({ name: 'agent_name', value: P_agent_name });
-        param.push({ name: 'url', value: P_url });
-        param.push({ name: 'tel', value: P_tel });
-        param.push({ name: 'address', value: P_address });
-        param.push({ name: 'national_code', value: P_national_code });
-        param.push({ name: 'open_time', value: P_open_time });
-        param.push({ name: 'close_time', value: P_close_time });
-        param.push({ name: 'city_id', value: P_city_id });
 
-        let s = await callZf_jslib('register/setinfo/', 'setinitialinfoagent', param, 2);
-        return s;
-    }
-
-    async function Do_setinitialinfo() {
-
-        const storeName = $("#storName").val();
-        const ecoNum = $('#ecoNum').val();
-        const storeNcode = $('#storeNcode').val();
-        const telStore = $('#telStore').val();
-        const faxStore = $('#faxStore').val();
-        const postalCodStore = $('#postalCodStore').val();
-        const faxstore = $('#faxStore').val();
-        const emailStore = $('#emailStore').val();
-        const sitStore = $('#sitStore').val();
-        if ($('#open24').is(':checked')) {
-            const closeTimeStore = "23:59";
-            const openTimeStore = "00:01";
-
-        }
-        else {
-
-            const closeTimeM = ($('#timeMon').val()) ? $('#timeMon').val() : ":00";
-            const closeTimeStore = $('#timeHon').val() + closeTimeM;
-            const openTimeM = ($('#timeMoff').val()) ? $('#timeMoff').val() : ":00";
-            const openTimeStore = $('#timeHoff').val() + openTimeM;
-        }
-
-        const cityStore = $('#cityStore').val();
-        const storeAddr = $("#stateStore").val() + "_" + $("#cityStore").val() + "_" + $('#stateCityStore').val() + "_" + $("#addStore").val() + "_" + $("#cityNum").val();
-
-        let s = await call_setinitialinfoagent(storeName, sitStore, telStore, storeAddr, storeNcode, openTimeStore, closeTimeStore, cityStore);
-        var mid = s.Mid;
-        if (mid == 1) {
-            // window.location.replace('./salerIntialInfoF.html')
-            alert('به جدول ادد شد ')
-        }
-        else {
-            alert('خطایی در سیستم رخ داده لطفا مجدد تلاش کنید ');
-        }
-
-    }
     //submit form 
 
     const submit = document.getElementById('formInfo');
@@ -187,7 +134,14 @@ $(document).ready(function () {
 
 
         if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8 && check9 && check10 && check11) {
-            Do_setinitialinfo();
+            try {
+                Do_setinitialinfo();
+
+                
+            } catch (e) {
+                throw (e, "اطلاعات ثبت نشد مجدد تلاش کنید ")
+
+            }
 
         }
         else {
@@ -195,28 +149,80 @@ $(document).ready(function () {
         }
 
     })
-   //site input enable if checkbox checked
-   $('#siteIs').on('change', function(){
-       debugger;
-       if(!(this).checked)
-       {
-           $("#sitStore").attr('disabled', 'disabled')
+    //site input enable if checkbox checked
+    $('#siteIs').on('change', function () {
+        if (!(this).checked) {
+            $("#sitStore").attr('disabled', 'disabled')
 
-       }else
-       {
-           $('#sitStore').removeAttr('disabled')
-       }
-      
-   })
+        } else {
+            $('#sitStore').removeAttr('disabled')
+        }
+    })
+    //do submit info to database base on zfram function
+    async function Do_setinitialinfo() {
+        debugger
+        const storeName = $("#storName").val();
+        const ecoNum = $('#ecoNum').val();
+        const storeNcode = $('#storeNcode').val();
+        const telStore = $('#telStore').val();
+        const postalCodStore = $('#postalCodStore').val();
+        const faxstore = $('#faxStore').val();
+        const emailStore = $('#emailStore').val();
+        const sitStore = $('#sitStore').val();
+        const region = $('#stateCityStore').val();
+        const building_number = $('#cityNum').val();
+        let closeTimeStore="23:59" ;
+        let openTimeStore ="00:01";
 
+        if ($('#open24').is(':checked')) {
+            // closeTimeStore = "23:59";
+            // openTimeStore = "00:01";
 
+        }
+        else {
 
+            const closeTimeM = ($('#timeMon').val()) ? $('#timeMon').val() : ":00";
+            closeTimeStore = $('#timeHon').val() + closeTimeM;
+            const openTimeM = ($('#timeMoff').val()) ? $('#timeMoff').val() : ":00";
+            openTimeStore = $('#timeHoff').val() + openTimeM;
+        }
 
+        const cityStore = $('#cityStore').val();
+        const storeAddr = $("#addStore").val();
 
+        let s = await call_setinitialinfoagent(storeName, sitStore, telStore, storeAddr, storeNcode, openTimeStore, closeTimeStore, cityStore, region, building_number, postalCodStore, faxstore, emailStore, ecoNum);
+        var mid = s.Mid;
+        if (mid == 1) {
 
+            alert('اطلاعت به درستی ذخیره شد ')
+            window.location.replace('./loginsaler.html')
+        }
+        else {
+            alert('خطایی در سیستم رخ داده لطفا مجدد تلاش کنید ');
+        }
 
+    }
+    //do zfram================================ services
+    async function call_setinitialinfoagent(P_agent_name, P_url, P_tel, P_address, P_national_code, P_open_time, P_close_time, P_city_id, P_region, P_building_number, P_postalcode, P_fax, P_email, P_economic_code) {
+        var param = [];
+        param.push({ name: 'agent_name', value: P_agent_name });
+        param.push({ name: 'url', value: P_url });
+        param.push({ name: 'tel', value: P_tel });
+        param.push({ name: 'address', value: P_address });
+        param.push({ name: 'national_code', value: P_national_code });
+        param.push({ name: 'open_time', value: P_open_time });
+        param.push({ name: 'close_time', value: P_close_time });
+        param.push({ name: 'city_id', value: P_city_id });
+        param.push({ name: 'region', value: P_region });
+        param.push({ name: 'building_number', value: P_building_number });
+        param.push({ name: 'postalcode', value: P_postalcode });
+        param.push({ name: 'fax', value: P_fax });
+        param.push({ name: 'email', value: P_email });
+        param.push({ name: 'economic_code', value: P_economic_code });
 
-
+        let s = await callZf_jslib('register/setinfo/', 'setinitialinfoagent', param, 2);
+        return s;
+    }
 
 
 })

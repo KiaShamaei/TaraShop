@@ -137,7 +137,7 @@ $(document).ready(function () {
                 //alert(mid);
                 //console.log(window.history);
                 //window.history.pushState({}, null, '/ZSHOP/SHOP/verifycode.html');
-                window.location.replace("/ZSHOP/SHOP/Register/verifycode.html");
+                window.location.replace("./verifycode.html");
               } //alert(mid);
 
 

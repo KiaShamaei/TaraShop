@@ -1,0 +1,194 @@
+ <!-- Page Heading -->
+ <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h4 class="h3 mb-0 text-gray-800">اطلاعات پایه مالک فروشگاه</h4>
+</div>
+
+
+<!--cotent Row info-->
+<div class="row justify-content-center align-item-center my-md-3 ">
+    <div class="col-md-9 signFormRow text-center">
+        <img src="../public/images/Tara.png" class="my-md-1">
+        <form action="" class="needs-validation formValid mt-2" id="formInfo" name="formInfo"
+            novalidate>
+            <div class="row text-right">
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="nameUser">نام فروشگاه </label>
+                        <input type="text" class="form-control" id="storName"
+                            placeholder="نام فروشگاه ..." name="uname" required autocomplete="off">
+                        <div id="storName" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> کد اقتصادی </label>
+                        <input type="text" class="form-control text-right fontname" id="ecoNum"
+                            placeholder="کداقتصادی..." name="ecoNum" required autocomplete="off"
+                            maxlength="12">
+                        <div id="alertecoNum" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> کد ملی فروشگاه </label>
+                        <input type="text" class="form-control text-right fontname" id="storeNcode"
+                            placeholder="کد ملی فروشگاه ..." name="storeNcode" required
+                            autocomplete="off" maxlength="12">
+                        <div id="alertstoreNcode" class="text-danger"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> شماره تلفن</label>
+                        <input type="text" class="form-control text-right fontname" id="telStore"
+                            placeholder="تلفن ..." name="telStore" required autocomplete="off"
+                            maxlength="12">
+                        <div id="alertetelStore" class="text-danger"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> شماره فکس </label>
+                        <input type="text" class="form-control text-right fontname" id="faxStore"
+                            placeholder="فکس..." name="faxStore" required autocomplete="off"
+                            maxlength="12">
+                        <div id="alertfaxStore" class="text-danger"></div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="postalCodUser">کد پستی </label>
+                        <input type="text" class="form-control fontname" id="postalCodStore"
+                            placeholder="کد پستی" required min="1" max="11" autocomplete="off"
+                            name="postalCodStore">
+                        <div id="alertpostalCodStore" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="emailUser"> پست لکترونیکی </label>
+                        <input type="text" class="form-control" id="emailStore"
+                            placeholder="ایمیل..." name="emailStore" required autocomplete="off">
+                        <div id="alertemailStore" class="text-danger"></div>
+
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> استان </label>
+                        <select class="form-control text-right" id="stateStore"
+                            placeholder="استان..." name="stateStore" required autocomplete="off">
+
+                        </select>
+                        <div id="alertstateStore" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right">شهر </label>
+                        <select type="text" class="form-control text-right" id="cityStore"
+                            placeholder="شهر..." name="cityStore" >
+                        </select>
+                        <div id="alertcityStore" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> منطقه </label>
+                        <input type="text" class="form-control text-right" id="stateCityStore"
+                            placeholder="منطقه..." name="stateCityStore" required
+                            autocomplete="off">
+                        <div id="stateCityStorealert" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> پلاک</label>
+                        <input type="text" class="form-control text-right" id="cityNum"
+                            placeholder="پلاک..." name="cityNum" required autocomplete="off">
+                        <div id="alertcityNum" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> نوع فروشگاه </label>
+                        <input type="text" class="form-control text-right" id="typeStore"
+                            placeholder="نوع فروشگاه..." name="typeStore" required
+                            autocomplete="off">
+                        <div id="alerttypeStore" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+
+                    <label class="form-check-label px-2 fontname" for="timeonStore"> ساعت فعالیت
+                    </label>
+                    <div class="form-row ">
+                        <div class="form-group col-md-6 timecontainer">
+                            <!-- <input type="number" class="form-control text-right fontname time" id="timeonStore" placeholder="از ساعت ..."
+                  name="timeonStore" required autocomplete="off"> -->
+
+                            <input type="number" class=" text-right  fontname time" id="timeMon"
+                                min="0" max="59" placeholder="از 00">
+                            <input type="number" class=" text-right  fontname time" id="timeHon"
+                                min="0" max="23" placeholder="23">
+                        </div>
+
+                        <div class="form-group col-md-6 timecontainer">
+
+                            <!-- <input type="number" class="form-control text-right fontname time" id="timeoffStore" placeholder="تا ساعت..."
+                  name="timeoffStore" required autocomplete="off"> -->
+
+                            <input type="number" class=" text-right  fontname time" id="timeMoff"
+                                min="0" max="59" placeholder="تا 00">
+                            <input type="number" class=" text-right  fontname time" id="timeHoff"
+                                min="0" max="23" placeholder="23">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 text-right">
+                    <div class="row">
+                        <div class="col-md-6 mt-4">
+                            <label class="checkbox-container text-left fontname">24 ساعته
+                                <input type="checkbox" name="open24" id="open24" value="1">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-md-6 mt-4 ">
+                            <label class="checkbox-container fontname">سایت دارم
+                                <input type="checkbox" name="siteIs" id="siteIs" value="1">
+                                <span class="checkmark2 checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="familyUser text-right"> آدرس سایت </label>
+                        <input type="text" class="form-control text-right" id="sitStore"
+                            placeholder="سایت..." name="sitStore" required autocomplete="off"
+                            disabled="disabled">
+                        <div id="alertsitStore" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="addUser">آدرس </label>
+                        <textarea type="text" class="form-control" id="addStore"
+                            placeholder="آدرس ..." name="addStore" autocomplete="off"></textarea>
+                        <div id="alertaddStore" class="text-danger"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-md-4">
+                    <button type="submit" class="btn btn-block btn-outline-warning "
+                        id="submit">ذخیره
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="../public/js/build/admin/editinitialinfoF.js"></script>
+

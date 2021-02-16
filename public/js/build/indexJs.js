@@ -1,46 +1,15 @@
-// Get the modal
-var modal = document.getElementById("main-nav"); // Get the button that opens the modal
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-var btn = document.getElementById("btn-slideMenu"); // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-// When the user clicks on the button, open the modal
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-// When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
-// When the user clicks anywhere outside of the modal, close it
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function openNav() {
-  document.getElementById("mySidenav").style.width = "350px";
-  document.querySelector('.modal').style.display = "block";
-}
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function openSecound() {
-  document.getElementById("mySidenav2").style.width = "350px";
-}
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function closeNav2() {
-  document.getElementById("mySidenav2").style.width = "0";
-}
-
-document.querySelector('#closeSide2').addEventListener('click', function () {
-  closeNav2();
-});
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.querySelector('.modal').style.display = "none"; // window.addEventListener("click",function(event) {
-  //     if (event.target.class == modal) {
-  //       document.querySelector('.modal').style.display="none";
-  //     }
-  //   })
-} // slider  -------------------------------------------->
-
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 $(document).ready(function () {
+  // slider  -------------------------------------------->
   jQuery('#camera_wrap').camera({
     loader: false,
     pagination: false,
@@ -71,285 +40,230 @@ $(document).ready(function () {
   $().UItoTop({
     easingType: 'easeOutQuart'
   });
-});
-/*sidenav  -------===============================>*/
+  /*sidenav  -------===============================>*/
 
-/* api from zfram code */
-// async function call_getmenuwithparent(P_parent_id) {
-//   var param = [];
-//   param.push({
-//     name: 'parent_id',
-//     value: P_parent_id
-//   });
-//   let s = await callZf_jslib('ui/view/menu/', 'getmenuwithparent', param, 2);
-//   return s;
-// }
-// /*getting data  from database for main menu sid nav*/
-//  /*-- کلاس مرتبط با دیتاساید منو اول  --*/
-//    function IcreateMenu(id,name,parentId,master){
-//             this.Id=id;
-//             this.Name=name;
-//             this.ParentId=parentId;
-//             this.Master=master;
-//         }
-// let  menuList=[];
-// async function getData (id){
-//     let data= await call_getmenuwithparent(id);
-//     return data ; 
-// }
-// const createMenu =async function (){
-//     const id  = 1;
-//     const menudata = await  getData(1);
-//     for(let i = 0 ; i < menudata.length ; i++){
-//         const itemEl= document.createElement('a');
-//         const itemLi = document.createElement('li')
-//         const itemPo = document.getElementById('mySidenavList');
-//         itemEl.textContent = menudata[i].CATEGORY_NAME ;
-// /*--create icon for submenu --*/
-//         const sideList2 = await getData(menudata[i].CATEGORY_ID);
-//         itemLi.appendChild(itemEl);
-//         itemPo.appendChild(itemLi);
-//         if (sideList2.length > 0 && sideList2[0].MSG==undefined){
-//             sideList2.map(item =>{
-//               const submenuIcon = document.createElement('i');
-//               submenuIcon.className = 'fa fa-angle-left float-left';
-//               const itemEl2= document.createElement('a');
-//               const itemLi2 = document.createElement('li');
-//               itemEl2.textContent = item.CATEGORY_NAME ;
-//               itemEl2.classList.add('sideChild');
-//               itemEl2.appendChild(submenuIcon);
-//               itemEl2.addEventListener('click',()=>{
-//               /* this function is in indexjs.js */
-//                 openSecound();
-//             })
-//               itemLi2.appendChild(itemEl2);
-//               itemPo.appendChild(itemLi2);
-//             }) ;
-//         }
-//     }
-// }
-// createMenu();
-//  /*-- کلاس مرتبط با دیتاساید منو اول  --*/
-// /**بعد از ورود به سیستم  */
-// if(localStorage.getItem('userItem')!=null){
-//   const username = localStorage.getItem('userItem') ;
-//   localStorage.removeItem('userItem')
-//   const poUsernameMenu = document.getElementById("userMenu");
-//   const poUsernameSide = document.getElementById("userSide");
-//   poUsernameSide.textContent = username ;
-//   poUsernameMenu.textContent = username ;
-// }
-//-----------------------after transpile --------------
+  /* api from zfram code */
 
-"use strict";
+  var GetDataZframe = /*#__PURE__*/function () {
+    function GetDataZframe() {
+      _classCallCheck(this, GetDataZframe);
+    }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
+    _createClass(GetDataZframe, [{
+      key: "call_getmenuwithparent",
+      value: function () {
+        var _call_getmenuwithparent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(P_parent_id) {
+          var param, s;
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  param = [];
+                  param.push({
+                    name: 'parent_id',
+                    value: P_parent_id
+                  });
+                  _context.next = 4;
+                  return callZf_jslib('ui/view/menu/', 'getmenuwithparent', param, 2);
 
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
+                case 4:
+                  s = _context.sent;
+                  return _context.abrupt("return", s);
 
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
-function call_getmenuwithparent(_x) {
-  return _call_getmenuwithparent.apply(this, arguments);
-}
-/*getting data  from database for main menu sid nav*/
-
-/*-- کلاس مرتبط با دیتاساید منو اول  --*/
-
-
-function _call_getmenuwithparent() {
-  _call_getmenuwithparent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(P_parent_id) {
-    var param, s;
-    return regeneratorRuntime.wrap(function _callee2$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            param = [];
-            param.push({
-              name: 'parent_id',
-              value: P_parent_id
-            });
-            _context3.next = 4;
-            return callZf_jslib('ui/view/menu/', 'getmenuwithparent', param, 2);
-
-          case 4:
-            s = _context3.sent;
-            return _context3.abrupt("return", s);
-
-          case 6:
-          case "end":
-            return _context3.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _call_getmenuwithparent.apply(this, arguments);
-}
-
-function IcreateMenu(id, name, parentId, master) {
-  this.Id = id;
-  this.Name = name;
-  this.ParentId = parentId;
-  this.Master = master;
-}
-
-var menuList = [];
-
-function getData(_x2) {
-  return _getData.apply(this, arguments);
-}
-
-function _getData() {
-  _getData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(id) {
-    var data;
-    return regeneratorRuntime.wrap(function _callee3$(_context4) {
-      while (1) {
-        switch (_context4.prev = _context4.next) {
-          case 0:
-            _context4.next = 2;
-            return call_getmenuwithparent(id);
-
-          case 2:
-            data = _context4.sent;
-            return _context4.abrupt("return", data);
-
-          case 4:
-          case "end":
-            return _context4.stop();
-        }
-      }
-    }, _callee3);
-  }));
-  return _getData.apply(this, arguments);
-}
-
-var createMenu = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var id, menudata, _loop, i;
-
-    return regeneratorRuntime.wrap(function _callee$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            id = 1;
-            _context2.next = 3;
-            return getData(1);
-
-          case 3:
-            menudata = _context2.sent;
-            _loop = /*#__PURE__*/regeneratorRuntime.mark(function _loop(i) {
-              var itemEl, itemLi, itemPo, sideList2;
-              return regeneratorRuntime.wrap(function _loop$(_context) {
-                while (1) {
-                  switch (_context.prev = _context.next) {
-                    case 0:
-                      itemEl = document.createElement('a');
-                      itemLi = document.createElement('li');
-                      itemPo = document.getElementById('mySidenavList');
-                      itemEl.textContent = menudata[i].CATEGORY_NAME;
-                      /*--create icon for submenu --*/
-
-                      _context.next = 6;
-                      return getData(menudata[i].CATEGORY_ID);
-
-                    case 6:
-                      sideList2 = _context.sent;
-                      itemLi.appendChild(itemEl);
-                      itemPo.appendChild(itemLi);
-
-                      if (sideList2.length > 0 && sideList2[0].MSG == undefined) {
-                        sideList2.map(function (item) {
-                          var submenuIcon = document.createElement('i');
-                          submenuIcon.className = 'fa fa-angle-left float-left';
-                          var itemEl2 = document.createElement('a');
-                          var itemLi2 = document.createElement('li');
-                          itemEl2.textContent = item.CATEGORY_NAME;
-                          itemEl2.classList.add('sideChild');
-                          itemEl2.appendChild(submenuIcon);
-                          itemEl2.addEventListener('click', function () {
-                            /* this function is in indexjs.js */
-                            openSecound();
-                          });
-                          itemLi2.appendChild(itemEl2);
-                          itemPo.appendChild(itemLi2);
-                        });
-                      }
-
-                    case 10:
-                    case "end":
-                      return _context.stop();
-                  }
-                }
-              }, _loop);
-            });
-            i = 0;
-
-          case 6:
-            if (!(i < menudata.length)) {
-              _context2.next = 11;
-              break;
+                case 6:
+                case "end":
+                  return _context.stop();
+              }
             }
+          }, _callee);
+        }));
 
-            return _context2.delegateYield(_loop(i), "t0", 8);
-
-          case 8:
-            i++;
-            _context2.next = 6;
-            break;
-
-          case 11:
-          case "end":
-            return _context2.stop();
+        function call_getmenuwithparent(_x) {
+          return _call_getmenuwithparent.apply(this, arguments);
         }
-      }
-    }, _callee);
-  }));
 
-  return function createMenu() {
-    return _ref.apply(this, arguments);
-  };
-}();
+        return call_getmenuwithparent;
+      }()
+    }, {
+      key: "getData",
+      value: function () {
+        var _getData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(id) {
+          var data;
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return this.call_getmenuwithparent(id);
 
-createMenu();
-/*-- کلاس مرتبط با دیتاساید منو اول  --*/
+                case 2:
+                  data = _context2.sent;
+                  return _context2.abrupt("return", data);
 
-/**بعد از ورود به سیستم  */
+                case 4:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, this);
+        }));
 
-if (localStorage.getItem('userItem') != null) {
-  var username = localStorage.getItem('userItem');
-  localStorage.removeItem('userItem');
-  var poUsernameMenu = document.getElementById("userMenu");
-  var poUsernameSide = document.getElementById("userSide");
-  poUsernameSide.textContent = username;
-  poUsernameMenu.textContent = username;
+        function getData(_x2) {
+          return _getData.apply(this, arguments);
+        }
+
+        return getData;
+      }()
+    }]);
+
+    return GetDataZframe;
+  }();
+
+  var getDataZframe = new GetDataZframe();
+  /*getting data  from database for main menu sid nav*/
+
+  /*-- کلاس مرتبط با دیتاساید منو اول  --*/
+
+  var ViewMenu = /*#__PURE__*/function () {
+    function ViewMenu() {
+      _classCallCheck(this, ViewMenu);
+    }
+
+    _createClass(ViewMenu, null, [{
+      key: "createMenu",
+      value: function () {
+        var _createMenu = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+          var menudata, _loop, i;
+
+          return regeneratorRuntime.wrap(function _callee3$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return getDataZframe.getData(1);
+
+                case 2:
+                  menudata = _context4.sent;
+                  _loop = /*#__PURE__*/regeneratorRuntime.mark(function _loop(i) {
+                    var itemEl, itemLi, itemPo, sideList2;
+                    return regeneratorRuntime.wrap(function _loop$(_context3) {
+                      while (1) {
+                        switch (_context3.prev = _context3.next) {
+                          case 0:
+                            itemEl = document.createElement('a');
+                            itemLi = document.createElement('li');
+                            itemPo = document.getElementById('mySidenavList');
+                            itemEl.textContent = menudata[i].CATEGORY_NAME;
+                            _context3.next = 6;
+                            return getDataZframe.getData(menudata[i].CATEGORY_ID);
+
+                          case 6:
+                            sideList2 = _context3.sent;
+                            itemLi.appendChild(itemEl);
+                            itemPo.appendChild(itemLi);
+
+                            if (sideList2.length > 0 && sideList2[0].MSG == undefined) {
+                              sideList2.map(function (item) {
+                                var submenuIcon = document.createElement('i');
+                                submenuIcon.className = 'fa fa-angle-left float-left';
+                                var itemEl2 = document.createElement('a');
+                                var itemLi2 = document.createElement('li');
+                                itemEl2.textContent = item.CATEGORY_NAME;
+                                itemEl2.classList.add('sideChild');
+                                itemEl2.appendChild(submenuIcon);
+                                itemEl2.addEventListener('click', function () {
+                                  /* this function is in indexjs.js */
+                                  openSecound();
+                                });
+                                itemLi2.appendChild(itemEl2);
+                                itemPo.appendChild(itemLi2);
+                              });
+                            }
+
+                          case 10:
+                          case "end":
+                            return _context3.stop();
+                        }
+                      }
+                    }, _loop);
+                  });
+                  i = 0;
+
+                case 5:
+                  if (!(i < menudata.length)) {
+                    _context4.next = 10;
+                    break;
+                  }
+
+                  return _context4.delegateYield(_loop(i), "t0", 7);
+
+                case 7:
+                  i++;
+                  _context4.next = 5;
+                  break;
+
+                case 10:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee3);
+        }));
+
+        function createMenu() {
+          return _createMenu.apply(this, arguments);
+        }
+
+        return createMenu;
+      }()
+    }]);
+
+    return ViewMenu;
+  }();
+
+  ViewMenu.createMenu();
+  /*-- کلاس مرتبط با دیتاساید منو اول  --*/
+
+  /**بعد از ورود به سیستم  */
+
+  if (localStorage.getItem('userlog') != null && localStorage.getItem('userlog') != "null") {
+    var username = localStorage.getItem('userlog');
+    var poUsernameMenu = document.getElementById("userMenu");
+    var poUsernameSide = document.getElementById("userSide");
+    var dropDown = document.getElementById("dropUser");
+    debugger;
+    poUsernameMenu.setAttribute("data-toggle", "dropdown");
+    poUsernameSide.textContent = username;
+    poUsernameMenu.textContent = username;
+  }
+
+  $('#exitUser').on('click', function () {
+    localStorage.clear();
+    location.reload();
+  });
+}); // inline call function use in modal 
+
+var openNav = function openNav() {
+  document.getElementById("mySidenav").style.width = "350px";
+  document.querySelector('.modal').style.display = "block";
+};
+
+var modal = document.getElementById("main-nav");
+var btn = document.getElementById("btn-slideMenu");
+
+function openSecound() {
+  document.getElementById("mySidenav2").style.width = "350px";
 }
+
+function closeNav2() {
+  document.getElementById("mySidenav2").style.width = "0";
+}
+
+document.querySelector('#closeSide2').addEventListener('click', function () {
+  closeNav2();
+});
+
+var closeNav = function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.querySelector('.modal').style.display = "none";
+};

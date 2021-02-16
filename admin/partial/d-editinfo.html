@@ -1,0 +1,101 @@
+<!-- Begin Page Content -->
+
+    
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h4 class="h3 mb-0 text-gray-800">اطلاعات پایه مالک فروشگاه</h4>
+    </div>
+
+
+    <!--cotent Row info-->
+    <div class="row justify-content-center align-item-center my-md-1 ">
+        <div class="col-md-8 signFormRow text-center">
+            <img src="../public/images/Tara.png" class="my-md-1">
+            <form class="needs-validation formValid mt-2" id="formInfo" name="formInfo">
+                <div class="row text-right">
+                    <div class="col-md-6 text-right">
+                        <div class="form-group">
+                            <label for="nameUser">نام</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                autocomplete="off">
+                            <div id="alertName" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <div class="form-group">
+                            <label for="familyUser text-right"> نام خانوادگی </label>
+                            <input type="text" class="form-control text-right" id="fname" name="fname"
+                                autocomplete="off">
+                            <div id="alertFname" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <div class="form-group">
+                            <label for="familyUser text-right"> نام پدر </label>
+                            <input type="text" class="form-control text-right" id="parentuser"
+                                name="fname" autocomplete="off">
+                            <div id="alertFname" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <div class="form-group">
+                            <label for="familyUser text-right"> شماره موبایل </label>
+                            <input type="text" class="form-control text-right fontname" id="mobileuser"
+                                name="fname" autocomplete="off" maxlength="11">
+                            <div id="alertmobile" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nationalCodUser">کد ملی </label>
+                            <input type="text" class="form-control fontname" maxlength="10"
+                                id="nationalCodUser" name="nationalCodUser" autocomplete="off">
+                            <div id="alertNationalCod" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="brithdayUser"> تاریخ تولد</label>
+                            <!-- <input type="text" class="form-control hasDatepicker" id="date-id" placeholder="تاریخ تولد..." name="uname" required zid="BIRTHDATE" zcp="تاریخ تولد" onchange="fixvalidatezframe(this);"> -->
+                            <input type="text" class="form-control fontname" id="date-id" name="date-id"
+                                autocomplete="off">
+                            <div id="alertDate" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="postalCodUser">کد پستی </label>
+                            <input type="text" class="form-control fontname" id="postalCodUser"
+                                maxlength="10" name="postalCodUser" min="1" max="11" autocomplete="off">
+                            <div id="alertPosatlcode" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="emailUser"> ایمیل </label>
+                            <input type="text" class="form-control" id="emailUser" name="emailUser"
+                                autocomplete="off">
+                            <div id="alertEmail" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="addUser">آدرس </label>
+                            <textarea type="text" class="form-control fontname" id="addUser"
+                                name="addUser" autocomplete="off"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-">
+                        <button type="submit" class="btn btn-block btn-outline-warning "
+                            id="submit">ذخیره
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<!-- /.container-fluid -->
+
+<script src="../public/js/build/admin/editinitialinfo.js"></script>

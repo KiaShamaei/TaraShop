@@ -4191,7 +4191,7 @@ tbody.collapse.show {
     position: absolute;
   }
   .navbar-expand-lg .navbar-nav .dropdown-menu-right {
-    right: 0;
+    right: -50px;
     left: auto;
   }
   .navbar-expand-lg .navbar-nav .nav-link {

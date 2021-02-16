@@ -8,6 +8,7 @@ a, abbr, acronym, address, applet, article, aside, audio, b, blockquote, big, bo
   border: 0;
   outline: 0;
   vertical-align: top;
+ 
 }
 
 ol, ul {
@@ -43,26 +44,14 @@ input[type=text], textarea {
 }
 
 @font-face {
-  font-family: Yekan;
-  src: url("../fonts/Yekan.eot");
-  src: url("../fonts/Yekan.woff") format("woff"), url("../fonts/Yekan.ttf") format("truetype");
+  font-family: IRANSANS;
+  src: url("../../public/fonts/IRANSans\(FaNum\).ttf");
+  // src: url("../fonts/Yekan.woff") format("woff"), url("../fonts/Yekan.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
-/*
-* Skeleton V1.1
-* Copyright 2021, first kiarash.shamaei
 
-/* Table of Contents
-==================================================
-    #Base 960 Grid
-    #Tablet (Portrait)
-    #Mobile (Portrait)
-    #Mobile (Landscape)
-    #Clearing */
-/* #Base 960 Grid
-================================================== */
 .container_12 {
   position: relative;
   width: 960px;
@@ -575,16 +564,17 @@ input[type=text], textarea {
 
 form.searchPart input[type=text] {
   outline-style: none;
+  padding: 4px 0;
   height: 100%;
-  width: 88%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  width: 80%;
+  box-sizing: border-box;
   border: 2px solid #ffd000;
+
 }
 
 .searchPartR {
   float: right;
-  width: 6%;
+  width: 10%;
   background: #ffb111;
   color: white;
   border: none;
@@ -594,7 +584,7 @@ form.searchPart input[type=text] {
 .searchPartL {
   float: left;
   padding: 8px;
-  width: 6%;
+  width: 10%;
   height: 100%;
   background: #ffb111;
   color: white;
@@ -704,17 +694,11 @@ form.searchPart::after {
 }
 
 .sidenavTop {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+ 
+display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  
 }
 
 @media screen and (max-height: 450px) {
@@ -854,7 +838,7 @@ body {
   min-width: 960px;
   /* background-color: #002141;
     color: #737272; */
-  font: 14px/20px 'Yekan';
+  font: 14px/20px 'IRANSANS';
 }
 
 .ic {
@@ -1753,4 +1737,3 @@ footer {
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */
 }
-/*# sourceMappingURL=indexStyle.css.map */

@@ -31,6 +31,7 @@ $(document).ready(function () {
 
 
 });
+
 //toggleshow password ==================================================
 //show passsword by click blink icon 
 const icon = document.getElementById('passIcon');

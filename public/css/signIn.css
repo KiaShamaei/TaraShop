@@ -7,8 +7,14 @@
   font-style: normal; }
 
 @font-face {
+  font-family: IRANSANS;
+  src: url("../../public/fonts/IRANSans(FaNum).ttf");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
   font-family: PYekan;
-  src: url("../fonts/PYekan.ttf") format("truetype"); }
+  src: url("../../public/fonts/PYekan.ttf"); }
 
 .fontname {
   font-family: 'PYekan'; }
@@ -105,9 +111,9 @@ input[type=text], textarea {
 
 body {
   direction: rtl;
-  font-family: "Yekan";
+  font-family: "PYekan";
   text-align: right;
-  font-family: "Yekan" !important; }
+  font-family: "PYekan" !important; }
 
 .mainSignin {
   max-height: 65%;
@@ -236,6 +242,15 @@ body {
   position: absolute;
   top: 28px;
   left: 10px;
+  color: #a0a0a0; }
+
+.passiconp {
+  position: relative; }
+
+.passIconSignin {
+  position: absolute;
+  top: 11px;
+  left: 23px;
   color: #a0a0a0; }
 
 /*passdIcon for register page */

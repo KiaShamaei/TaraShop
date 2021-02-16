@@ -6,15 +6,23 @@
     font-weight: normal;
     font-style: normal;
   }
+  @font-face {
+    font-family: IRANSANS;
+    src: url("../../public/fonts/IRANSans\(FaNum\).ttf");
+    // src: url("../fonts/Yekan.woff") format("woff"), url("../fonts/Yekan.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
   
   @font-face {
     font-family: PYekan;
-    src: url("../fonts/PYekan.ttf") format("truetype");
+    src: url("../../public/fonts/PYekan.ttf");
   }
   
   .fontname {
     font-family: 'PYekan';
   }
+  
   
   a, abbr, acronym, address, applet, article, aside, audio, b, blockquote, big, body, center, canvas, caption, cite, code, command, datalist, dd, del, details, dfn, dl, div, dt, em, embed, fieldset, figcaption, figure, font, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, keygen, label, legend, li, meter, nav, object, ol, output, p, pre, progress, q, s, samp, section, small, span, source, strike, strong, sub, sup, table, tbody, tfoot, thead, th, tr, tdvideo, tt, u, ul, var {
     background: transparent;
@@ -128,9 +136,9 @@
   
   body {
     direction: rtl;
-    font-family: "Yekan";
+    font-family: "PYekan";
     text-align: right;
-    font-family: "Yekan" !important;
+    font-family: "PYekan" !important;
   }
   
   
@@ -269,6 +277,17 @@
     position: absolute;
     top: 28px;
     left: 10px;
+    color: #a0a0a0;
+  }
+  
+  //sigin page
+  .passiconp{
+    position: relative;
+  }
+  .passIconSignin {
+    position: absolute;
+    top: 11px;
+    left: 23px;
     color: #a0a0a0;
   }
   /*passdIcon for register page */

@@ -32,7 +32,8 @@
     "autoprefixer": "^10.2.4",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-watch": "^5.0.1",
-    "postcss": "^8.2.4"
+    "postcss": "^8.2.4",
+    "postcss-merge-rules": "^4.0.3"
   },
   "presets": [
     "@babel/preset-env"

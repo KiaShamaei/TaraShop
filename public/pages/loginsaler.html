@@ -30,9 +30,9 @@
                         <div class="form-row">
                             <div class="col-12 py-3">
                                 
-                                <input type="text" class="form-control" name="useremail" id="useremail"
-                                    placeholder=" ایمیل خود را وارد کنید  ..." autocomplete="off">
-                                    <div class="text-danger" id="validEmail"></div>
+                                <input type="text" class="form-control fontname" name="usermobile" id="usermobile"
+                                    placeholder=" شماره موبایل خود را وارد کنید  ..." autocomplete="off">
+                                    <div class="text-danger" id="validusermobile"></div>
                             </div>
                             <!-- <div class="col-12 py-3 ">
                                 <input type="password" class="form-control fontname" name="userpassword"
@@ -41,10 +41,12 @@
 
                             </div> -->
 
-                            <div class="col-12 py-1"> 
-                                <input type="text" class="form-control fontname " name="usermobile"
-                                    id="userpass" placeholder="لطفا رمز خود را وارد کنید ..." autocomplete="off" maxlength="11">
-                                    <div id="validUser" class="text-danger"></div>
+                            <div class="col-12 py-3 position-r">
+                                
+                                <input type="password" class="form-control " name="userpassword"
+                                    id="userpassword" placeholder=" رمز عبور   ..." maxlength="10">
+                                <i class="fa fa-eye passIcon" id="passIcon"></i>
+
                             </div>
                             <div class="col-12 p-3 captchaimg">
                                 <input class="inputcaptcha text-right fontname" type="text"  placeholder=" کد امنیتی مقابل را وارد کنید ... " id="txtcaptcha" autocomplete="off">
@@ -61,9 +63,6 @@
                 </div>
             </div>
         </div>
-
-
-
     </main>
     <div class="container-fluid footerSignin">
 
@@ -85,6 +84,7 @@
     <!--must inject-->
     
     <!--ZFrame_Code-->
+    <script src="../js/regenerator-runtime.js"></script>
     <script src="../js/build/zfjquery.js" type="text/javascript"></script>
     <script src="../js/build/zfjquery.ui.core.js" type="text/javascript"></script>
     <script src="../js/build/main.js" type="text/javascript"></script>

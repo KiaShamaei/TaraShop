@@ -195,18 +195,113 @@ $(document).ready(function () {
       $('#timeHoff').removeAttr('disabled');
       $('#timeMoff').removeAttr('disabled');
     }
-  }); //do services
+  }); //submit form 
 
-  function call_setinitialinfoagent(_x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9) {
+  var submit = document.getElementById('formInfo');
+  submit.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var check1 = checkRequired($("#storName"), $('#alertstorName'));
+    var check2 = checkRequired($('#ecoNum'), $('#alertecoNum'));
+    var check3 = checkRequired($('#storeNcode'), $('#alertstoreNcode'));
+    var check4 = checkRequired($('#telStore'), $('#alerttelStore'));
+    var check5 = checkRequired($('#faxStore'), $('#alertfaxStore'));
+    var check6 = checkRequired($('#postalCodStore'), $('#alertpostalCodStore'));
+    var check7 = checkRequired($('#emailStore'), $('#alertemailStore'));
+    var check8 = checkRequired($('#stateStore'), $('#alertstateStore'));
+    var check9 = checkRequired($('#cityStore'), $('#alertcityStore'));
+    var check10 = checkRequired($('#cityNum'), $('#alertcityNume'));
+    var check11 = checkRequired($('#typeStore'), $('#alerttypeStore'));
+
+    if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8 && check9 && check10 && check11) {
+      try {
+        Do_setinitialinfo();
+      } catch (e) {
+        throw e, "اطلاعات ثبت نشد مجدد تلاش کنید ";
+      }
+    } else {
+      $("#nameUser").select();
+    }
+  }); //site input enable if checkbox checked
+
+  $('#siteIs').on('change', function () {
+    if (!this.checked) {
+      $("#sitStore").attr('disabled', 'disabled');
+    } else {
+      $('#sitStore').removeAttr('disabled');
+    }
+  }); //do submit info to database base on zfram function
+
+  function Do_setinitialinfo() {
+    return _Do_setinitialinfo.apply(this, arguments);
+  } //do zfram================================ services
+
+
+  function _Do_setinitialinfo() {
+    _Do_setinitialinfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+      var storeName, ecoNum, storeNcode, telStore, postalCodStore, faxstore, emailStore, sitStore, region, building_number, closeTimeStore, openTimeStore, closeTimeM, openTimeM, cityStore, storeAddr, s, mid;
+      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              debugger;
+              storeName = $("#storName").val();
+              ecoNum = $('#ecoNum').val();
+              storeNcode = $('#storeNcode').val();
+              telStore = $('#telStore').val();
+              postalCodStore = $('#postalCodStore').val();
+              faxstore = $('#faxStore').val();
+              emailStore = $('#emailStore').val();
+              sitStore = $('#sitStore').val();
+              region = $('#stateCityStore').val();
+              building_number = $('#cityNum').val();
+              closeTimeStore = "23:59";
+              openTimeStore = "00:01";
+
+              if ($('#open24').is(':checked')) {// closeTimeStore = "23:59";
+                // openTimeStore = "00:01";
+              } else {
+                closeTimeM = $('#timeMon').val() ? $('#timeMon').val() : ":00";
+                closeTimeStore = $('#timeHon').val() + closeTimeM;
+                openTimeM = $('#timeMoff').val() ? $('#timeMoff').val() : ":00";
+                openTimeStore = $('#timeHoff').val() + openTimeM;
+              }
+
+              cityStore = $('#cityStore').val();
+              storeAddr = $("#addStore").val();
+              _context5.next = 18;
+              return call_setinitialinfoagent(storeName, sitStore, telStore, storeAddr, storeNcode, openTimeStore, closeTimeStore, cityStore, region, building_number, postalCodStore, faxstore, emailStore, ecoNum);
+
+            case 18:
+              s = _context5.sent;
+              mid = s.Mid;
+
+              if (mid == 1) {
+                alert('اطلاعت به درستی ذخیره شد ');
+                window.location.replace('./loginsaler.html');
+              } else {
+                alert('خطایی در سیستم رخ داده لطفا مجدد تلاش کنید ');
+              }
+
+            case 21:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5);
+    }));
+    return _Do_setinitialinfo.apply(this, arguments);
+  }
+
+  function call_setinitialinfoagent(_x2, _x3, _x4, _x5, _x6, _x7, _x8, _x9, _x10, _x11, _x12, _x13, _x14, _x15) {
     return _call_setinitialinfoagent.apply(this, arguments);
   }
 
   function _call_setinitialinfoagent() {
-    _call_setinitialinfoagent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(P_agent_name, P_url, P_tel, P_address, P_national_code, P_open_time, P_close_time, P_city_id) {
+    _call_setinitialinfoagent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(P_agent_name, P_url, P_tel, P_address, P_national_code, P_open_time, P_close_time, P_city_id, P_region, P_building_number, P_postalcode, P_fax, P_email, P_economic_code) {
       var param, s;
-      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+      return regeneratorRuntime.wrap(function _callee6$(_context6) {
         while (1) {
-          switch (_context5.prev = _context5.next) {
+          switch (_context6.prev = _context6.next) {
             case 0:
               param = [];
               param.push({
@@ -241,111 +336,44 @@ $(document).ready(function () {
                 name: 'city_id',
                 value: P_city_id
               });
-              _context5.next = 11;
+              param.push({
+                name: 'region',
+                value: P_region
+              });
+              param.push({
+                name: 'building_number',
+                value: P_building_number
+              });
+              param.push({
+                name: 'postalcode',
+                value: P_postalcode
+              });
+              param.push({
+                name: 'fax',
+                value: P_fax
+              });
+              param.push({
+                name: 'email',
+                value: P_email
+              });
+              param.push({
+                name: 'economic_code',
+                value: P_economic_code
+              });
+              _context6.next = 17;
               return callZf_jslib('register/setinfo/', 'setinitialinfoagent', param, 2);
 
-            case 11:
-              s = _context5.sent;
-              return _context5.abrupt("return", s);
-
-            case 13:
-            case "end":
-              return _context5.stop();
-          }
-        }
-      }, _callee5);
-    }));
-    return _call_setinitialinfoagent.apply(this, arguments);
-  }
-
-  function Do_setinitialinfo() {
-    return _Do_setinitialinfo.apply(this, arguments);
-  } //submit form 
-
-
-  function _Do_setinitialinfo() {
-    _Do_setinitialinfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-      var storeName, ecoNum, storeNcode, telStore, faxStore, postalCodStore, faxstore, emailStore, sitStore, _closeTimeStore, _openTimeStore, closeTimeM, _closeTimeStore2, openTimeM, _openTimeStore2, cityStore, storeAddr, s, mid;
-
-      return regeneratorRuntime.wrap(function _callee6$(_context6) {
-        while (1) {
-          switch (_context6.prev = _context6.next) {
-            case 0:
-              storeName = $("#storName").val();
-              ecoNum = $('#ecoNum').val();
-              storeNcode = $('#storeNcode').val();
-              telStore = $('#telStore').val();
-              faxStore = $('#faxStore').val();
-              postalCodStore = $('#postalCodStore').val();
-              faxstore = $('#faxStore').val();
-              emailStore = $('#emailStore').val();
-              sitStore = $('#sitStore').val();
-
-              if ($('#open24').is(':checked')) {
-                _closeTimeStore = "23:59";
-                _openTimeStore = "00:01";
-              } else {
-                closeTimeM = $('#timeMon').val() ? $('#timeMon').val() : ":00";
-                _closeTimeStore2 = $('#timeHon').val() + closeTimeM;
-                openTimeM = $('#timeMoff').val() ? $('#timeMoff').val() : ":00";
-                _openTimeStore2 = $('#timeHoff').val() + openTimeM;
-              }
-
-              cityStore = $('#cityStore').val();
-              storeAddr = $("#stateStore").val() + "_" + $("#cityStore").val() + "_" + $('#stateCityStore').val() + "_" + $("#addStore").val() + "_" + $("#cityNum").val();
-              _context6.next = 14;
-              return call_setinitialinfoagent(storeName, sitStore, telStore, storeAddr, storeNcode, openTimeStore, closeTimeStore, cityStore);
-
-            case 14:
-              s = _context6.sent;
-              mid = s.Mid;
-
-              if (mid == 1) {
-                // window.location.replace('./salerIntialInfoF.html')
-                alert('به جدول ادد شد ');
-              } else {
-                alert('خطایی در سیستم رخ داده لطفا مجدد تلاش کنید ');
-              }
-
             case 17:
+              s = _context6.sent;
+              return _context6.abrupt("return", s);
+
+            case 19:
             case "end":
               return _context6.stop();
           }
         }
       }, _callee6);
     }));
-    return _Do_setinitialinfo.apply(this, arguments);
+    return _call_setinitialinfoagent.apply(this, arguments);
   }
-
-  var submit = document.getElementById('formInfo');
-  submit.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var check1 = checkRequired($("#storName"), $('#alertstorName'));
-    var check2 = checkRequired($('#ecoNum'), $('#alertecoNum'));
-    var check3 = checkRequired($('#storeNcode'), $('#alertstoreNcode'));
-    var check4 = checkRequired($('#telStore'), $('#alerttelStore'));
-    var check5 = checkRequired($('#faxStore'), $('#alertfaxStore'));
-    var check6 = checkRequired($('#postalCodStore'), $('#alertpostalCodStore'));
-    var check7 = checkRequired($('#emailStore'), $('#alertemailStore'));
-    var check8 = checkRequired($('#stateStore'), $('#alertstateStore'));
-    var check9 = checkRequired($('#cityStore'), $('#alertcityStore'));
-    var check10 = checkRequired($('#cityNum'), $('#alertcityNume'));
-    var check11 = checkRequired($('#typeStore'), $('#alerttypeStore'));
-
-    if (check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8 && check9 && check10 && check11) {
-      Do_setinitialinfo();
-    } else {
-      $("#nameUser").select();
-    }
-  }); //site input enable if checkbox checked
-
-  $('#siteIs').on('change', function () {
-    debugger;
-
-    if (!this.checked) {
-      $("#sitStore").attr('disabled', 'disabled');
-    } else {
-      $('#sitStore').removeAttr('disabled');
-    }
-  });
 });

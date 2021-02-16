@@ -26,6 +26,23 @@ $(document).ready(function () {
   $("#date-id").pDatepicker({
     observer: true,
     format: 'YYYY/MM/DD'
+  }); //Do required and subit ===================================================
+
+  var submit = document.getElementById('formInfo');
+  submit.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var check1 = checkRequired($("#name"), $('#alertName'));
+    var check2 = checkRequired($('#fname'), $('#alertFname'));
+    var check3 = checkRequired($('#nationalCodUser'), $('#alertNationalCod'));
+    var check4 = checkRequired($('#date-id'), $('#alertDate'));
+    var check5 = checkRequired($('#postalCodUser'), $('#alertPosatlcode'));
+    var check6 = checkRequired($('#emailUser'), $('#alertEmail'));
+
+    if (check1 && check2 && check3 && check4 && check5 && check6) {
+      Do_setinitialinfo();
+    } else {
+      $("#nameUser").select();
+    }
   }); //zfram function=======================================
 
   function call_setinitialinfo(_x, _x2, _x3, _x4, _x5, _x6, _x7) {
@@ -87,8 +104,7 @@ $(document).ready(function () {
 
   function Do_setinitialinfo() {
     return _Do_setinitialinfo.apply(this, arguments);
-  } //Do required and subit ===================================================
-
+  }
 
   function _Do_setinitialinfo() {
     _Do_setinitialinfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
@@ -97,7 +113,6 @@ $(document).ready(function () {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              debugger;
               fname = $("#name").val();
               lname = $('#fname').val();
               ncode = $('#nationalCodUser').val();
@@ -105,10 +120,10 @@ $(document).ready(function () {
               postcod = $('#postalCodUser').val();
               email = $('#emailUser').val();
               addUser = $('#addUser').val();
-              _context2.next = 10;
+              _context2.next = 9;
               return call_setinitialinfo(fname, lname, ncode, birthday, postcod, email, addUser);
 
-            case 10:
+            case 9:
               s = _context2.sent;
               mid = s.Mid;
 
@@ -118,7 +133,7 @@ $(document).ready(function () {
                 alert('خطایی در سیستم رخ داده لطفا مجدد تلاش کنید ');
               }
 
-            case 13:
+            case 12:
             case "end":
               return _context2.stop();
           }
@@ -127,22 +142,4 @@ $(document).ready(function () {
     }));
     return _Do_setinitialinfo.apply(this, arguments);
   }
-
-  var submit = document.getElementById('formInfo');
-  submit.addEventListener('submit', function (e) {
-    debugger;
-    e.preventDefault();
-    var check1 = checkRequired($("#name"), $('#alertName'));
-    var check2 = checkRequired($('#fname'), $('#alertFname'));
-    var check3 = checkRequired($('#nationalCodUser'), $('#alertNationalCod'));
-    var check4 = checkRequired($('#date-id'), $('#alertDate'));
-    var check5 = checkRequired($('#postalCodUser'), $('#alertPosatlcode'));
-    var check6 = checkRequired($('#emailUser'), $('#alertEmail'));
-
-    if (check1 && check2 && check3 && check4 && check5 && check6) {
-      Do_setinitialinfo();
-    } else {
-      $("#nameUser").select();
-    }
-  });
 });

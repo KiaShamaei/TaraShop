@@ -116,11 +116,10 @@ $(document).ready(function () {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              debugger;
-              _context2.next = 3;
+              _context2.next = 2;
               return call_setinitialinfo(fname, lname, ncode, birthday, postcod, email, addUser);
 
-            case 3:
+            case 2:
               s = _context2.sent;
               mid = s.Mid;
 
@@ -130,7 +129,7 @@ $(document).ready(function () {
                 alert('Deny');
               }
 
-            case 6:
+            case 5:
             case "end":
               return _context2.stop();
           }

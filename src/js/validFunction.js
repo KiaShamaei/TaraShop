@@ -31,7 +31,6 @@ const value = phone.val();
 //check postal code 
 function IsIranPostalCode(postalcod,showmessage) {
     const value = postalcod.val();
-    debugger
     var regExPostalCode = /^\d{10}$/;
     if ((value.match(regExPostalCode))) {
         showmessage.html("")
@@ -63,8 +62,8 @@ function NationalCode(nationalcode,showmessage) {
 }
 //toggle input password part 
 function togglePassword(showpassword,inputpassword) {
+    
     showpassword.addEventListener('click', function () {
-        debugger;
         let state = inputpassword.getAttribute('type');
         if (state == 'password')
             inputpassword.setAttribute('type', 'text')
