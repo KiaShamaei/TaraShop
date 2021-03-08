@@ -47,8 +47,9 @@ class GetInfo{
         return s; 
   }  
  async Do_getsalerinfo(){
-  const mobileuser= localStorage.getItem('token');
-  const info = await this.call_getsalerinfo(mobileuser);
+   
+  const userInfo= JSON.parse(localStorage.getItem('userInfo'));
+  const info = await this.call_getsalerinfo(userInfo.Mid);
   //localStorage.setItem('id',info[0].ENTITY_ID);
   const form = $('#formInfo');
   $('#name').val(info[0].FIRSTNAME);
@@ -95,7 +96,7 @@ class SubmitEdit {
     let s = await this.call_setinitialinfo(fname, lname, ncode, birthday, postcod, email, addUser);
     var mid = s.Mid;
     if (mid == 1) {
-   debugger
+   
         $('#editAccept').modal('show');
        
         //var ss=window.location.origin+"/ZSHOP/SHOP/admin/index.html";

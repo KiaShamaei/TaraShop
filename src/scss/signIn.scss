@@ -60,6 +60,7 @@
   input[type=text], textarea {
     outline: none;
     border-radius: 0;
+    direction: rtl;
   }
   
   * {
@@ -139,6 +140,9 @@
     font-family: "PYekan";
     text-align: right;
     font-family: "PYekan" !important;
+  }
+  .hide{
+    display: none;
   }
   
   
@@ -297,7 +301,7 @@
   .passIcon2 {
     position: absolute;
     top: 51px;
-    left:232px;
+    left: 380px;
     color: #a0a0a0;
   }
   

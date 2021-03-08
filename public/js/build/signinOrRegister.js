@@ -56,7 +56,7 @@ var GetdataZfram = /*#__PURE__*/function () {
     key: "do_existaccountuser",
     value: function () {
       var _do_existaccountuser = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(item) {
-        var result, fullname;
+        var result;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -67,10 +67,11 @@ var GetdataZfram = /*#__PURE__*/function () {
               case 2:
                 result = _context2.sent;
                 if (result.Mid == 0) alertMessage.style.display = "block";else {
-                  fullname = result.MName + "-" + result.MLastname;
-                  localStorage.setItem('userItem', fullname);
-                  localStorage.setItem('userId', result.Mid);
-                  localStorage.setItem('userName', item);
+                  //     const fullname = result.MName + "-" + result.MLastname;
+                  //    localStorage.setItem('userItem', fullname );
+                  //    localStorage.setItem('userId', result.Mid);
+                  //    localStorage.setItem('userName' , item)
+                  localStorage.setItem("userInfo", JSON.stringify(result));
                   window.location.replace("/ZSHOP/SHOP/public/pages/signin.html");
                 }
 

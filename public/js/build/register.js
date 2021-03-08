@@ -180,5 +180,10 @@ $(document).ready(function () {
   $('#signForm').on('submit', function (e) {
     e.preventDefault();
     DoVerify();
+  }); //relaod captcha from server 
+
+  var reload = document.getElementById("repeatCaptcha");
+  reload.addEventListener("click", function () {
+    loadimage();
   });
 });

@@ -1,7 +1,8 @@
 const userItem = document.getElementById("userItem");
-const userEntity = localStorage.getItem('userItem');
-const userName = localStorage.getItem('userName');
-const userId = localStorage.getItem('userId');
+//all info of user goes to userEntity
+const userEntity = JSON.parse(localStorage.getItem('userInfo'));
+const userName = userEntity.MName + "-" + userEntity.MLastname;
+const userId = userEntity.Mid;
 userItem.textContent = userName;
 const userPasswordForm = document.getElementById("userpass");
 const  alertMessage = document.getElementById("alertMessage") ;
@@ -27,16 +28,14 @@ class GetDatazframe {
 
  async do_validity  (item1,item2){  
   const result= await this.call_checkpassword (item1 , item2 )
+  console.log(result.Mid)
   if (result.Mid == 0 )
    { 
-    this.alertMessage.style.display = "block";
+    alertMessage.style.display = "block";
    }else 
    {
-    
-    const userlog = localStorage.getItem('userItem');
-    localStorage.setItem('userlog',userlog);
-    localStorage.removeItem('userItem');
-    window.location.replace("/ZSHOP/SHOP/index.html");
+     localStorage.setItem("token", 1)
+     window.location.replace("/ZSHOP/SHOP/index.html");
 
    }
   
@@ -49,8 +48,7 @@ userPasswordForm.addEventListener('submit', function(e){
    
     getdataZfram.do_validity(password , userId);
     
-    localStorage.removeItem('userId');
-    localStorage.removeItem('userName');
+  
 })
 
 

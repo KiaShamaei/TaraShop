@@ -8,218 +8,195 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-// jquery make ui of tree ------------------------------------------------
-$.fn.extend({
-  treed: function treed(o) {
-    var openedClass = 'fa-toggle-on';
-    var closedClass = 'fa-toggle-off';
+$(document).ready(function () {
+  var root = document.querySelector("#rootCat"); //calling zframe function and retrived data from dataBase.
 
-    if (typeof o != 'undefined') {
-      if (typeof o.openedClass != 'undefined') {
-        openedClass = o.openedClass;
-      }
-
-      if (typeof o.closedClass != 'undefined') {
-        closedClass = o.closedClass;
-      }
+  var GetDataZfram = /*#__PURE__*/function () {
+    function GetDataZfram() {
+      _classCallCheck(this, GetDataZfram);
     }
 
-    ; //initialize each of the top levels
+    _createClass(GetDataZfram, [{
+      key: "call_getcategoryagent",
+      value: function () {
+        var _call_getcategoryagent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(P_entityid) {
+          var param, s;
+          return regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  param = [];
+                  param.push({
+                    name: 'entityid',
+                    value: P_entityid
+                  });
+                  ;
+                  _context.next = 5;
+                  return callZf_jslib('activity/agent/', 'getcategoryagent', param, 1);
 
-    var tree = $(this);
-    tree.addClass("tree");
-    tree.find('li').has("ul").each(function () {
-      var branch = $(this); //li with children ul
+                case 5:
+                  s = _context.sent;
+                  return _context.abrupt("return", s);
 
-      branch.prepend("<i class='indicator fa " + closedClass + "'></i>");
-      branch.addClass('branch');
-      branch.on('click', function (e) {
-        if (this == e.target) {
-          var icon = $(this).children('i:first');
-          icon.toggleClass(openedClass + " " + closedClass);
-          $(this).children().children().toggle();
-        }
-      });
-      branch.children().children().toggle();
-    }); //fire event from the dynamically added icon
-
-    tree.find('.branch .indicator').each(function () {
-      $(this).on('click', function () {
-        $(this).closest('li').click();
-      });
-    }); //fire event to open branch if the li contains an anchor instead of text
-
-    tree.find('.branch>a').each(function () {
-      $(this).on('click', function (e) {
-        $(this).closest('li').click();
-        e.preventDefault();
-      });
-    }); //fire event to open branch if the li contains a button instead of text
-
-    tree.find('.branch>button').each(function () {
-      $(this).on('click', function (e) {
-        $(this).closest('li').click();
-        e.preventDefault();
-      });
-    });
-  }
-}); //Initialization of treeviews=========
-// $('#tree2').treed({openedClass:'glyphicon-folder-open', closedClass:'glyphicon-folder-close'});
-// $('#tree3').treed({openedClass:'glyphicon-chevron-right', closedClass:'glyphicon-chevron-down'});
-//geting dom --------------------------------------------------------------------------
-
-var wrap = document.getElementById('tree1');
-var outputs = ""; //call services
-
-var GetData = /*#__PURE__*/function () {
-  function GetData() {
-    _classCallCheck(this, GetData);
-  }
-
-  _createClass(GetData, [{
-    key: "call_getcategory",
-    value: function () {
-      var _call_getcategory = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-        var param, s;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                debugger;
-                param = [];
-                _context.next = 4;
-                return callZf_jslib('activity/category/fetchdata/', 'getcategory', param, 1);
-
-              case 4:
-                s = _context.sent;
-                return _context.abrupt("return", s);
-
-              case 6:
-              case "end":
-                return _context.stop();
+                case 7:
+                case "end":
+                  return _context.stop();
+              }
             }
-          }
-        }, _callee);
-      }));
+          }, _callee);
+        }));
 
-      function call_getcategory() {
-        return _call_getcategory.apply(this, arguments);
+        function call_getcategoryagent(_x) {
+          return _call_getcategoryagent.apply(this, arguments);
+        }
+
+        return call_getcategoryagent;
+      }()
+    }]);
+
+    return GetDataZfram;
+  }(); //make ui base on entity ui .
+
+
+  var MakeUi = /*#__PURE__*/function () {
+    function MakeUi() {
+      _classCallCheck(this, MakeUi);
+    }
+
+    _createClass(MakeUi, [{
+      key: "add",
+      value: function add(data) {
+        var pattern = "";
+        data.forEach(function (item) {
+          pattern += " <div class=\"col-lg-3 justify-content-start mt-md-2\">\n            <div class=\"card\">\n                <div class=\"card-body\">\n                  <h5 class=\"card-title\">".concat(item.CATEGORY_NAME, "</h5>\n                  <p class=\"card-text\">\u062A\u0648\u0636\u06CC\u062D\u0627\u062A : ").concat(item.DESCRIPTION, "...</p>\n                  <p class=\"card-text\"> \u0645\u0627\u062F\u0631 \u062F\u0633\u062A\u0647 :").concat(item.PARENT_NAME, "</p>\n                  <button href=\"#\" class=\"btn btn-outline-danger deletecat\" id = ").concat(item.CATEGORY_ID, ">\u062D\u0630\u0641 \u062F\u0633\u062A\u0647</button>\n                </div>\n              </div>\n        </div>");
+        });
+        root.innerHTML = pattern;
       }
+    }, {
+      key: "showMsg",
+      value: function showMsg() {
+        root.innerHTML = "<p class=\"card-text\">\u062F\u0633\u062A\u0647 \u0628\u0646\u062F\u06CC \u0627\u0646\u062A\u062E\u0627\u0628 \u0646\u0634\u062F\u0647 \u0644\u0637\u0641\u0627 \u062D\u062F\u0627\u0642\u0644 \u06CC\u06A9 \u062F\u0633\u062A\u0647 \u0645\u062D\u0635\u0648\u0644 \u0627\u0646\u062A\u062E\u0627\u0628 \u0641\u0631\u0645\u0627\u06CC\u06CC\u062F  ...</p>";
+      }
+    }]);
 
-      return call_getcategory;
-    }()
-  }]);
+    return MakeUi;
+  }(); //store data in database 
 
-  return GetData;
-}();
 
-var getdata = new GetData();
+  var Storage = /*#__PURE__*/function () {
+    function Storage() {
+      _classCallCheck(this, Storage);
+    }
 
-var MakeElement = /*#__PURE__*/function () {
-  function MakeElement() {
-    _classCallCheck(this, MakeElement);
-  }
+    _createClass(Storage, null, [{
+      key: "getStore",
+      value: function getStore(data) {
+        localStorage.setItem("category ", data);
+      }
+    }, {
+      key: "update",
+      value: function update(id) {}
+    }]);
 
-  _createClass(MakeElement, null, [{
-    key: "makeChild",
-    value: function () {
-      var _makeChild = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(obj, data) {
+    return Storage;
+  }();
+
+  var DeleteCategory = /*#__PURE__*/function () {
+    function DeleteCategory() {
+      _classCallCheck(this, DeleteCategory);
+    }
+
+    _createClass(DeleteCategory, [{
+      key: "call_deletecategoryagent",
+      value: function () {
+        var _call_deletecategoryagent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(P_categoryid) {
+          var param, s;
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  param = [];
+                  param.push({
+                    name: 'categoryid',
+                    value: P_categoryid
+                  });
+                  _context2.next = 4;
+                  return callZf_jslib('activity/agentcategory/delete/', 'deletecategoryagent', param, 2);
+
+                case 4:
+                  s = _context2.sent;
+                  return _context2.abrupt("return", s);
+
+                case 6:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        function call_deletecategoryagent(_x2) {
+          return _call_deletecategoryagent.apply(this, arguments);
+        }
+
+        return call_deletecategoryagent;
+      }()
+    }, {
+      key: "getDeleteItem",
+      value: function getDeleteItem() {
         var _this = this;
 
-        var output;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                outputs += "<li class=\"mx-2\"><input type=\"checkbox\" class=\"categoryselected parentcat  mx-2\" data-id=".concat(obj.CATEGORY_ID, "> ").concat(obj.CATEGORY_NAME, "<ul>");
-                debugger;
-                output = data.filter(function (item) {
-                  return item.PARENT_ID == obj.CATEGORY_ID;
-                });
-                output.forEach(function (item) {
-                  item.CHILDCOUNT > 0 ? _this.makeChild(item, data) : outputs += "<li class=\"mx-2\"><input type=\"checkbox\"  class=\"categoryselected mx-2 \" data-id=".concat(item.CATEGORY_ID, "> ").concat(item.CATEGORY_NAME, " </li>");
-                });
-                outputs += "</ul>";
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      function makeChild(_x, _x2) {
-        return _makeChild.apply(this, arguments);
+        var deleteBtn = document.querySelectorAll('.deletecat');
+        deleteBtn.forEach(function (item) {
+          return item.addEventListener('click', function (e) {
+            _this.deletItem(e.target.id);
+          });
+        });
       }
+    }, {
+      key: "deletItem",
+      value: function deletItem(id) {
+        var _this2 = this;
 
-      return makeChild;
-    }()
-  }, {
-    key: "makeParent",
-    value: function makeParent(root, data) {
-      var _this2 = this;
+        this.call_deletecategoryagent(id).then(function (data) {
+          if (data.Mid == 1) {
+            getDataZfram.call_getcategoryagent(userInfo.MEntityId).then(function (data) {
+              if (data[0].MSG != "  EXECUTE SUCCESS ") {
+                makeUi.add(data);
+                Storage.getStore(data);
 
-      debugger;
-      root.forEach(function (obj) {
-        debugger;
-
-        if (obj.CHILDCOUNT > 0) {
-          _this2.makeChild(obj, data);
-        } else {
-          outputs += "<li class=\"mx-2\"><input type=\"checkbox\" class=\"categoryselected mx-2 \" data-id=".concat(obj.CATEGORY_ID, ">").concat(obj.CATEGORY_NAME, " </li>");
-        }
-      });
-    }
-  }]);
-
-  return MakeElement;
-}(); //make elemeet base on response 
-
-
-function createCategory() {
-  return _createCategory.apply(this, arguments);
-}
-
-function _createCategory() {
-  _createCategory = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-    var data, root;
-    return regeneratorRuntime.wrap(function _callee3$(_context3) {
-      while (1) {
-        switch (_context3.prev = _context3.next) {
-          case 0:
-            _context3.next = 2;
-            return getdata.call_getcategory();
-
-          case 2:
-            data = _context3.sent;
-            root = data.filter(function (item) {
-              return item.PARENT_ID == "1";
+                _this2.getDeleteItem();
+              } else {
+                makeUi.showMsg();
+              }
             });
-            MakeElement.makeParent(root, data);
-            wrap.innerHTML = outputs; //Initialization of treeviews=========
-
-            $('#tree1').treed();
-
-          case 7:
-          case "end":
-            return _context3.stop();
-        }
+          } else {
+            alert("something wrong!");
+          }
+        });
       }
-    }, _callee3);
-  }));
-  return _createCategory.apply(this, arguments);
-}
+    }]);
 
-createCategory(); //submit & send select item to backend------------------------
+    return DeleteCategory;
+  }(); //getdata from database 
 
-$("#btn").on('click', function () {
-  var ItemCat = Array.prototype.slice.call(document.querySelectorAll('.categoryselected'));
-  var selected = ItemCat.filter(function (item) {
-    return item.checked == true;
+
+  var getDataZfram = new GetDataZfram();
+  var makeUi = new MakeUi();
+  var deletecategory = new DeleteCategory();
+  var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  getDataZfram.call_getcategoryagent(userInfo.MEntityId).then(function (data) {
+    if (data[0].MSG != "  EXECUTE SUCCESS ") {
+      makeUi.add(data);
+      Storage.getStore(data);
+      deletecategory.getDeleteItem();
+    } else {
+      makeUi.showMsg();
+    }
+
+    ;
   });
-  var idselected = selected.map(function (item) {
-    return item.dataset.id;
+  $("#acceptEdit").click(function () {
+    location.replcae('#/category');
   });
-  console.log(JSON.stringify(idselected));
 });

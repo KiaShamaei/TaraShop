@@ -76,6 +76,10 @@ $(document).ready(function () {
     var showmessage = $("#validMobile");
     IsIranPhone($(this), showmessage);
   });
+  var reload = document.getElementById("repeatCaptcha");
+  reload.addEventListener("click", function () {
+    loadimage();
+  });
 }); //toggleshow password ==================================================
 //show passsword by click blink icon 
 

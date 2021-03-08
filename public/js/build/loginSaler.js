@@ -9,7 +9,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 $(document).ready(function () {
-  //-----------------valid test of form with valid function -----------
+  var reload = document.getElementById("repeatCaptcha"); //-----------------valid test of form with valid function -----------
+
   $("#usermobile").on('change', function () {
     var showmessage = $("#validusermobile");
     IsIranPhone($(this), showmessage);
@@ -90,9 +91,13 @@ $(document).ready(function () {
     }]);
 
     return GetCaptcha;
-  }();
+  }(); //reload captcha agin ---------------------->
+
 
   var getcaptcha = new GetCaptcha();
+  reload.addEventListener("click", function () {
+    getcaptcha.loadimage();
+  });
   getcaptcha.loadimage(); //------------------------------------zfram api code ----------------
 
   var Login = /*#__PURE__*/function () {
@@ -159,13 +164,14 @@ $(document).ready(function () {
                   response = _context4.sent;
 
                   if (response.Mid > 0) {
-                    localStorage.setItem("token", response.Mid);
-                    localStorage.setItem('id', response.ENTITYID);
+                    localStorage.setItem("userInfo", JSON.stringify(response));
                     window.location.replace('../../admin/index.html');
                   } else if (response.Mid == 0) {
-                    $('#validusermobile').html('رمز عبور اشتباه است ');
+                    $('#validusermobile').html('شماره موبایل یا رمز عبور اشتباه است !');
                   } else if (response.Mid == -1) {
-                    $('#validusermobile').html('کد کپچا اشتباه است ');
+                    $('#validusermobile').html('کد کپچا اشتباه است ! ');
+                  } else if (response.Mid == -2) {
+                    $('#validusermobile').html('کاربری با این شماره ثبت نشده است!');
                   }
 
                 case 4:

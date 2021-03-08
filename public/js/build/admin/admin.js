@@ -1,77 +1,45 @@
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 $(document).ready(function () {
+  //  //get from zfram services ---------------------
+  //  async function call_getsalerinfo(P_mobile)
+  //  {
+  //     var param = []; 
+  //        param.push({name:'mobile', value:P_mobile});
+  //         let s= await  callZf_jslib('register/saler/fetchdata/','getsalerinfo',param,2); 
+  //        return s; 
+  //  }
   // if  user comes from loginsaler or be in this page ---------------------------- 
-  if (localStorage.getItem('token') != null) {
-    //get from zfram services ---------------------
-    var call_getsalerinfo = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(P_mobile) {
-        var param, s;
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                param = [];
-                param.push({
-                  name: 'mobile',
-                  value: P_mobile
-                });
-                _context.next = 4;
-                return callZf_jslib('register/saler/fetchdata/', 'getsalerinfo', param, 2);
+  var Getdata = /*#__PURE__*/function () {
+    function Getdata() {
+      _classCallCheck(this, Getdata);
+    }
 
-              case 4:
-                s = _context.sent;
-                return _context.abrupt("return", s);
+    _createClass(Getdata, null, [{
+      key: "Do_getsalerinfo",
+      value: function Do_getsalerinfo(userinfo) {
+        $('#saler,#user').html(userinfo.MName + " " + userinfo.MLastname);
+        $('#username').html(userinfo.MName + " " + userinfo.MLastname);
+      } // static manageSideBar(flag) {
+      //   if (flag == 0) {
+      //     $(".usersidebar").removeClass('hide');
+      //     $(".salersidebar").addClass('hide');
+      //   } else {
+      //     $(".salersidebar").removeClass('hide');
+      //     $(".usersidebar").addClass('hide');
+      //   }
+      // }
 
-              case 6:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
+    }]);
 
-      return function call_getsalerinfo(_x) {
-        return _ref.apply(this, arguments);
-      };
-    }();
+    return Getdata;
+  }();
 
-    var Do_getsalerinfo = /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        var mobileuser, info;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                mobileuser = localStorage.getItem('token');
-                _context2.next = 3;
-                return call_getsalerinfo(mobileuser);
-
-              case 3:
-                info = _context2.sent;
-                $('#user').html(info[0].FIRSTNAME + " " + info[0].LASTNAME);
-                $('#username').html(info[0].FIRSTNAME + " " + info[0].LASTNAME);
-
-              case 6:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      return function Do_getsalerinfo() {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-
-    Do_getsalerinfo();
-  } else {//must be open after edition end ------------------------------------------------------------------------------
-    // window.location.replace('../public/pages/loginsaler.html')
-  } //=================================dynamic sammy 
-
+  var userinfo = JSON.parse(localStorage.getItem('userInfo')); //main content dynamic =================
 
   (function ($) {
     var app = $.sammy('#wrapper-dynamic', function () {
@@ -109,15 +77,55 @@ $(document).ready(function () {
         this.app.swap('');
         this.partial('partial/chart.html');
       });
-      this.get('#/tabel', function () {
+      this.get('#/editCategory', function () {
         this.app.swap('');
-        this.partial('partial/tabel.html');
+        this.partial('partial/editCategory.html');
+      });
+      this.get('#/category', function () {
+        this.app.swap('');
+        this.partial('partial/category.html');
+      });
+      this.get('#/productsMatch', function () {
+        this.app.swap('');
+        this.partial('partial/productsMatch.html');
+      });
+      this.get('#/productMatch', function () {
+        this.app.swap('');
+        this.partial('partial/productMatch.html');
       });
     });
     $(function () {
       app.run('#/');
     });
   })(jQuery); //--- end of sammy 
+  //sidebar dynamic 
+
+
+  (function ($) {
+    var app = $.sammy('#dynamic-sidebar', function () {
+      this.debug = true;
+      var form_fields = null;
+
+      if (userinfo.MIsSaler == 0) {
+        this.get("", function () {
+          this.app.swap('');
+          this.partial('partial/userSideBar.html').then(function () {
+            Getdata.Do_getsalerinfo(userinfo);
+          });
+        });
+      } else {
+        this.get("", function () {
+          this.app.swap('');
+          this.partial('partial/salerSideBar.html').then(function () {
+            Getdata.Do_getsalerinfo(userinfo);
+          });
+        });
+      }
+    });
+    $(function () {
+      app.run('');
+    });
+  })(jQuery); //Getdata.manageSideBar(userinfo.MIsSaler);
   //exit of admin page ===== 
 
 

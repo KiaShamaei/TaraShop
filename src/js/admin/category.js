@@ -1,144 +1,121 @@
+$(document).ready(function () {
+
+    const root = document.querySelector("#rootCat");
+
+    //calling zframe function and retrived data from dataBase.
+    class GetDataZfram {
+        async call_getcategoryagent(P_entityid) {
+
+            var param = [];
+            param.push({ name: 'entityid', value: P_entityid });;
+
+            let s = await callZf_jslib('activity/agent/', 'getcategoryagent', param, 1);
+            return s;
+        }
 
 
-// jquery make ui of tree ------------------------------------------------
-$.fn.extend({
-    treed: function (o) {
+    }
+    //make ui base on entity ui .
+    class MakeUi {
+        add(data) {
+            
 
-        var openedClass = 'fa-toggle-on';
-        var closedClass = 'fa-toggle-off';
+            let pattern = "";
+            data.forEach(item => {
+                pattern +=
+                    ` <div class="col-lg-3 justify-content-start mt-md-2">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${item.CATEGORY_NAME}</h5>
+                  <p class="card-text">توضیحات : ${item.DESCRIPTION}...</p>
+                  <p class="card-text"> مادر دسته :${item.PARENT_NAME}</p>
+                  <button href="#" class="btn btn-outline-danger deletecat" id = ${item.CATEGORY_ID}>حذف دسته</button>
+                </div>
+              </div>
+        </div>`;
+            });
 
-        if (typeof o != 'undefined') {
-            if (typeof o.openedClass != 'undefined') {
-                openedClass = o.openedClass;
-            }
-            if (typeof o.closedClass != 'undefined') {
-                closedClass = o.closedClass;
-            }
+            root.innerHTML = pattern;
         };
-        //initialize each of the top levels
-        var tree = $(this);
-        tree.addClass("tree");
-        tree.find('li').has("ul").each(function () {
-            var branch = $(this); //li with children ul
-            branch.prepend("<i class='indicator fa " + closedClass + "'></i>");
-            branch.addClass('branch');
-            branch.on('click', function (e) {
-                if (this == e.target) {
-                    var icon = $(this).children('i:first');
-                    icon.toggleClass(openedClass + " " + closedClass);
-                    $(this).children().children().toggle();
+        showMsg() {
+            root.innerHTML = `<p class="card-text">دسته بندی انتخاب نشده لطفا حداقل یک دسته محصول انتخاب فرمایید  ...</p>`
+        }
+    }
+    //store data in database 
+    class Storage {
+        static getStore(data) {
+            localStorage.setItem("category ", data)
+        }
+        static update(id) {
+
+
+        }
+    }
+    class DeleteCategory {
+
+        async call_deletecategoryagent(P_categoryid) {
+            var param = [];
+            param.push({ name: 'categoryid', value: P_categoryid });
+
+            let s = await callZf_jslib('activity/agentcategory/delete/', 'deletecategoryagent', param, 2);
+            return s;
+        }
+        getDeleteItem() {
+
+            const deleteBtn = document.querySelectorAll('.deletecat');
+            deleteBtn.forEach(item => item.addEventListener('click', (e) => {
+                this.deletItem(e.target.id)
+            }))
+        }
+        deletItem(id) {
+            
+            this.call_deletecategoryagent(id).then(data => {
+            
+                if (data.Mid == 1) {
+                    getDataZfram.call_getcategoryagent(userInfo.MEntityId).then((data) => {
+                        
+                        if (data[0].MSG!="  EXECUTE SUCCESS ") {
+                            makeUi.add(data);
+                            Storage.getStore(data);
+                            this.getDeleteItem();
+                        } else {
+                            makeUi.showMsg();
+
+                        }
+                    })
+                } else {
+                    alert("something wrong!")
                 }
             })
-            branch.children().children().toggle();
-        });
-        //fire event from the dynamically added icon
-        tree.find('.branch .indicator').each(function () {
-            $(this).on('click', function () {
-                $(this).closest('li').click();
-            });
-        });
-        //fire event to open branch if the li contains an anchor instead of text
-        tree.find('.branch>a').each(function () {
-            $(this).on('click', function (e) {
-                $(this).closest('li').click();
-                e.preventDefault();
-            });
-        });
-        //fire event to open branch if the li contains a button instead of text
-        tree.find('.branch>button').each(function () {
-            $(this).on('click', function (e) {
-                $(this).closest('li').click();
-                e.preventDefault();
-            });
-        });
+        }
+
     }
-});
+    //getdata from database 
+    const getDataZfram = new GetDataZfram();
+    const makeUi = new MakeUi();
+    const deletecategory = new DeleteCategory();
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    getDataZfram.call_getcategoryagent(userInfo.MEntityId)
+        .then((data) => {
+            
+            if (data[0].MSG!="  EXECUTE SUCCESS ") {
+                
+                makeUi.add(data);
+                Storage.getStore(data);
+                deletecategory.getDeleteItem();
+            } else {
+                makeUi.showMsg();
 
-//Initialization of treeviews=========
-
-
-
-// $('#tree2').treed({openedClass:'glyphicon-folder-open', closedClass:'glyphicon-folder-close'});
-
-// $('#tree3').treed({openedClass:'glyphicon-chevron-right', closedClass:'glyphicon-chevron-down'});
-
-
-//geting dom --------------------------------------------------------------------------
-const wrap = document.getElementById('tree1')
-let outputs = ""
-//call services
-class GetData {
-     async call_getcategory() {
-         debugger;
-        var param = [];
-
-        let s = await callZf_jslib('activity/category/fetchdata/', 'getcategory', param, 1);
-  
-        return s;
-    }
-    
-  
-}
-const getdata = new GetData();
- 
-
-
-class MakeElement {
-
-    static async makeChild(obj,data) {
-        
-        outputs += `<li class="mx-2"><input type="checkbox" class="categoryselected parentcat  mx-2" data-id=${obj.CATEGORY_ID}> ${obj.CATEGORY_NAME}<ul>`;
-        debugger;
-        let output = data.filter(item=>item.PARENT_ID == obj.CATEGORY_ID);
-        output.forEach(item => {
-
-            (item.CHILDCOUNT > 0) ? this.makeChild(item,data) : outputs += `<li class="mx-2"><input type="checkbox"  class="categoryselected mx-2 " data-id=${item.CATEGORY_ID}> ${item.CATEGORY_NAME} </li>`;
+            };
+        });
+        $("#acceptEdit").click(function(){
+            location.replcae('#/category');
         })
 
-        outputs += `</ul>`
-    }
-    static makeParent(root,data) {
-        debugger
-        root.forEach(obj => {
-            debugger
-            if (obj.CHILDCOUNT > 0) {
 
-                this.makeChild(obj,data)
-
-
-            }
-            else {
-                outputs += `<li class="mx-2"><input type="checkbox" class="categoryselected mx-2 " data-id=${obj.CATEGORY_ID}>${obj.CATEGORY_NAME} </li>`;
-            }
-
-        })
-    }
-
-}
-//make elemeet base on response 
-async function createCategory (){
-   const data =await getdata.call_getcategory();
-   const root = data.filter(item=>item.PARENT_ID == "1");
-   MakeElement.makeParent(root,data);
-   wrap.innerHTML = outputs
-   //Initialization of treeviews=========
-   $('#tree1').treed();
-
-}
-createCategory();
-
-//submit & send select item to backend------------------------
-
-$("#btn").on('click', function () {
-    
-    const ItemCat = Array.prototype.slice.call(document.querySelectorAll('.categoryselected'));
-    const selected = ItemCat.filter(item => item.checked == true);
-    const idselected = selected.map(item => item.dataset.id);
-    console.log(JSON.stringify(idselected))
 
 
 })
-
 
 
 

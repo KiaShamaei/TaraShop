@@ -198,26 +198,27 @@ $(document).ready(function () {
       key: "Do_getsaleragentinfo",
       value: function () {
         var _Do_getsaleragentinfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-          var id, result, arrayTimeOpen, arrayTimeClose;
+          var userInfo, result, arrayTimeOpen, arrayTimeClose;
           return regeneratorRuntime.wrap(function _callee4$(_context4) {
             while (1) {
               switch (_context4.prev = _context4.next) {
                 case 0:
+                  debugger;
                   _context4.t0 = this;
-                  _context4.next = 3;
+                  _context4.next = 4;
                   return this.call_getproviancelist;
 
-                case 3:
+                case 4:
                   _context4.t1 = _context4.sent;
-                  _context4.next = 6;
+                  _context4.next = 7;
                   return _context4.t0.fillInptPro.call(_context4.t0, _context4.t1, "stateStore");
 
-                case 6:
-                  id = localStorage.getItem('id');
-                  _context4.next = 9;
-                  return this.call_getsaleragentinfo(id);
+                case 7:
+                  userInfo = JSON.parse(localStorage.getItem('userInfo'));
+                  _context4.next = 10;
+                  return this.call_getsaleragentinfo(userInfo.MEntityId);
 
-                case 9:
+                case 10:
                   result = _context4.sent;
                   debugger;
                   arrayTimeOpen = result[0].OPEN_TIME.split(":");
@@ -237,16 +238,16 @@ $(document).ready(function () {
                   $('#addStore').val(result[0].ADDRESS != " " ? result[0].ADDRESS : "");
                   $('#stateStore').val(result[0].LT_PROVINCE_ID);
                   _context4.t2 = this;
-                  _context4.next = 30;
+                  _context4.next = 31;
                   return this.call_getcityfromprfovaince;
 
-                case 30:
+                case 31:
                   _context4.t3 = _context4.sent;
                   _context4.t4 = result[0].LT_PROVINCE_ID;
-                  _context4.next = 34;
+                  _context4.next = 35;
                   return _context4.t2.fillInptPro.call(_context4.t2, _context4.t3, 'cityStore', _context4.t4);
 
-                case 34:
+                case 35:
                   if (parseInt(arrayTimeOpen[0]) == 0 && parseInt(arrayTimeOpen[1]) == 1 && parseInt(arrayTimeClose[0]) == 23 && parseInt(arrayTimeClose[1]) == 59) {
                     $("#open24").prop('checked', true);
                   } else {
@@ -261,7 +262,7 @@ $(document).ready(function () {
                     $('#sitStore').removeAttr('disabled');
                   }
 
-                case 36:
+                case 37:
                 case "end":
                   return _context4.stop();
               }

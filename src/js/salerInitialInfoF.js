@@ -160,7 +160,7 @@ $(document).ready(function () {
     })
     //do submit info to database base on zfram function
     async function Do_setinitialinfo() {
-        debugger
+        
         const storeName = $("#storName").val();
         const ecoNum = $('#ecoNum').val();
         const storeNcode = $('#storeNcode').val();

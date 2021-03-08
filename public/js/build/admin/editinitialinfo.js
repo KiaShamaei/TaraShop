@@ -82,14 +82,14 @@ $(document).ready(function () {
       key: "Do_getsalerinfo",
       value: function () {
         var _Do_getsalerinfo = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-          var mobileuser, info, form;
+          var userInfo, info, form;
           return regeneratorRuntime.wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  mobileuser = localStorage.getItem('token');
+                  userInfo = JSON.parse(localStorage.getItem('userInfo'));
                   _context2.next = 3;
-                  return this.call_getsalerinfo(mobileuser);
+                  return this.call_getsalerinfo(userInfo.Mid);
 
                 case 3:
                   info = _context2.sent;
@@ -215,7 +215,6 @@ $(document).ready(function () {
                   mid = s.Mid;
 
                   if (mid == 1) {
-                    debugger;
                     $('#editAccept').modal('show'); //var ss=window.location.origin+"/ZSHOP/SHOP/admin/index.html";
                     // window.location.assign(window.location.origin+"/ZSHOP/SHOP/admin/index.html");
                     //window.location.replace("#/redirect");

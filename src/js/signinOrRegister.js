@@ -24,10 +24,12 @@ class GetdataZfram{
         if ( result.Mid == 0  )
         alertMessage.style.display="block";
         else{
-            const fullname = result.MName + "-" + result.MLastname;
-           localStorage.setItem('userItem', fullname );
-           localStorage.setItem('userId', result.Mid);
-           localStorage.setItem('userName' , item)
+            
+        //     const fullname = result.MName + "-" + result.MLastname;
+        //    localStorage.setItem('userItem', fullname );
+        //    localStorage.setItem('userId', result.Mid);
+        //    localStorage.setItem('userName' , item)
+           localStorage.setItem("userInfo",JSON.stringify( result))
            window.location.replace("/ZSHOP/SHOP/public/pages/signin.html");
         }
    

@@ -20,11 +20,11 @@
 <body>
     <div class="container mainSignin">
         <div class="row justify-content-center align-item-center my-md-5">
-            <div class="col-md-4 signFormRow">
+            <div class="col-md-5 signFormRow">
                 <img src="../images/Tara.png" class="my-md-2">
                 <form class="signForm text-right" id="signForm">
-                    <div class="form-row justify-content-center">
-                        <div class="col-10 mb-3 ">
+                    <div class="form-row ">
+                        <div class="col-12 mb-3 ">
                             <label for="exampleInputEmail1" class="form-label py-md-2 text-muted">شماره همراه</label>
                             <div id="validMobile" class="text-danger"></div>
                             <input class="form-control text-left fontname" type="tel"
@@ -39,13 +39,14 @@
                             <div class="form-text fontform-size fontform-color">کد امنیتی ، شماره همراه و رمز ورود الزامیست </div>
                         </div>
                        
-                        <div class="col-10 py-3 captchaimg">
+                        <div class="col-12 py-3 captchaimg">
 
                             <input class="inputcaptcha text-right" type="text"
                                 placeholder=" کد امنیتی زیر را وارد کنید ... " id="txtcaptcha" autocomplete="off">
                             <img id="imgcaptcha"   src="">
+                            <span><i class="fa fa-repeat mt-4  text-secondary " id="repeatCaptcha"></i></span>
                         </div>
-                        <div class="col-10">
+                        <div class="col-12">
                             <button type="submit"  id="cmdcheck" value="ارسال"
                                 class="btn btn-warning btn-block" disabled>ارسال</button>
                         </div>

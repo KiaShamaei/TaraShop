@@ -1,0 +1,135 @@
+.page-link-2 {
+  
+
+}
+  
+  .page-link-active {
+    color: #593196;
+    background-color: #fff;
+    border: 1px solid #593196; }
+    .proMatch{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        background-color: #eee;
+        border-radius: 20px;
+        margin: .5rem;
+        justify-content: space-between;
+        text-align: right;
+        border-radius: 10px;
+        border: 1px solid #999 !important;
+        box-shadow: 2px 3px 10px 5px #ccc;
+        transition: transform .4s;
+     img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        padding: 10px;
+       }
+      
+      &:hover {
+        transform: scale(1.02);
+            }
+       p, a {
+        font-weight: bold;
+        padding: 0; 
+            }
+      .productDetail {
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap; }
+    }
+    .paginationjs{
+        width: 800px;
+    }
+    .paginationjs-pages {
+        width: 100%;
+        ul{
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            display: inline;
+            a{
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+            a:active{
+                color: black; 
+            }
+        }  
+    }
+.paginationjs-go-input{
+    float: left;
+}
+.paginationjs-go-button{
+    float: left; 
+} 
+.J-paginationjs-go-pagenumber{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #111;
+    border-radius: 3px;
+    outline: none;
+  
+   
+  
+    &:hover {
+      border-bottom: 3px solid #aaa;
+      transition: all 0.2s ease-in-out;
+    }
+    &:focus {
+      border: none;
+      border-bottom: 3px solid #aaa;
+    }
+
+} 
+.J-paginationjs-go-button{
+    
+        box-sizing: border-box;
+        appearance: none;
+        background-color: transparent;
+        border: 2px solid $indigo;
+        border-radius: 0.6em;
+        color:  $indigo;
+        cursor: pointer;
+        display: flex;
+        align-self: center;
+        line-height: 1;
+        margin: 5px;
+        padding:0 10px 5px 10px;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+       
+      
+        &:hover,
+        &:focus {
+          color:$yellow;
+          outline: 0;
+        }
+        border-color: $indigo;
+       
+        background: {
+          image: linear-gradient(45deg,$indigo 50%, transparent 50%);
+          position: 100%;
+          size: 400%;
+        }
+        transition: background 300ms ease-in-out;
+        
+        &:hover {
+          background-position: 0;
+        }
+      
+}
+.productSelect{
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 10px;
+   }
+}

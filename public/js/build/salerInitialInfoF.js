@@ -243,7 +243,6 @@ $(document).ready(function () {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              debugger;
               storeName = $("#storName").val();
               ecoNum = $('#ecoNum').val();
               storeNcode = $('#storeNcode').val();
@@ -268,10 +267,10 @@ $(document).ready(function () {
 
               cityStore = $('#cityStore').val();
               storeAddr = $("#addStore").val();
-              _context5.next = 18;
+              _context5.next = 17;
               return call_setinitialinfoagent(storeName, sitStore, telStore, storeAddr, storeNcode, openTimeStore, closeTimeStore, cityStore, region, building_number, postalCodStore, faxstore, emailStore, ecoNum);
 
-            case 18:
+            case 17:
               s = _context5.sent;
               mid = s.Mid;
 
@@ -282,7 +281,7 @@ $(document).ready(function () {
                 alert('خطایی در سیستم رخ داده لطفا مجدد تلاش کنید ');
               }
 
-            case 21:
+            case 20:
             case "end":
               return _context5.stop();
           }

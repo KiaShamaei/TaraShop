@@ -77,7 +77,11 @@ $('#signForm').on('submit', function(e){
     e.preventDefault();
     DoVerify();
 })
-
+//relaod captcha from server 
+const reload = document.getElementById("repeatCaptcha");
+reload.addEventListener("click",()=>{
+    loadimage();
+})
 
 
 

@@ -226,12 +226,13 @@ $(document).ready(function () {
 
   /**بعد از ورود به سیستم  */
 
-  if (localStorage.getItem('userlog') != null && localStorage.getItem('userlog') != "null") {
-    var username = localStorage.getItem('userlog');
+  if (localStorage.getItem('userInfo') != null && localStorage.getItem("token") == 1) {
+    debugger;
+    var userEntity = JSON.parse(localStorage.getItem('userInfo'));
+    var username = userEntity.MName + "-" + userEntity.MLastname;
     var poUsernameMenu = document.getElementById("userMenu");
     var poUsernameSide = document.getElementById("userSide");
     var dropDown = document.getElementById("dropUser");
-    debugger;
     poUsernameMenu.setAttribute("data-toggle", "dropdown");
     poUsernameSide.textContent = username;
     poUsernameMenu.textContent = username;

@@ -8,10 +8,11 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var userItem = document.getElementById("userItem");
-var userEntity = localStorage.getItem('userItem');
-var userName = localStorage.getItem('userName');
-var userId = localStorage.getItem('userId');
+var userItem = document.getElementById("userItem"); //all info of user goes to userEntity
+
+var userEntity = JSON.parse(localStorage.getItem('userInfo'));
+var userName = userEntity.MName + "-" + userEntity.MLastname;
+var userId = userEntity.Mid;
 userItem.textContent = userName;
 var userPasswordForm = document.getElementById("userpass");
 var alertMessage = document.getElementById("alertMessage");
@@ -70,7 +71,7 @@ var GetDatazframe = /*#__PURE__*/function () {
     key: "do_validity",
     value: function () {
       var _do_validity = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(item1, item2) {
-        var result, userlog;
+        var result;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -80,17 +81,16 @@ var GetDatazframe = /*#__PURE__*/function () {
 
               case 2:
                 result = _context2.sent;
+                console.log(result.Mid);
 
                 if (result.Mid == 0) {
-                  this.alertMessage.style.display = "block";
+                  alertMessage.style.display = "block";
                 } else {
-                  userlog = localStorage.getItem('userItem');
-                  localStorage.setItem('userlog', userlog);
-                  localStorage.removeItem('userItem');
+                  localStorage.setItem("token", 1);
                   window.location.replace("/ZSHOP/SHOP/index.html");
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -114,6 +114,4 @@ userPasswordForm.addEventListener('submit', function (e) {
   e.preventDefault();
   password = e.target.elements[0].value;
   getdataZfram.do_validity(password, userId);
-  localStorage.removeItem('userId');
-  localStorage.removeItem('userName');
 });

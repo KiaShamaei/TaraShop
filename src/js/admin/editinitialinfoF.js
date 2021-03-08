@@ -113,10 +113,10 @@ $(document).ready(function () {
             }
         }
        async Do_getsaleragentinfo() {
-            
+            debugger
             await this.fillInptPro(await this.call_getproviancelist, "stateStore");
-            const id = localStorage.getItem('id');
-            const result = await this.call_getsaleragentinfo(id);
+            const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            const result = await this.call_getsaleragentinfo(userInfo.MEntityId);
             debugger
             const arrayTimeOpen = result[0].OPEN_TIME.split(":");
             const arrayTimeClose = result[0].CLOSE_TIME.split(":");

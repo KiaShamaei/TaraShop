@@ -1,4 +1,5 @@
 $(document).ready(function () {
+const reload = document.getElementById("repeatCaptcha");
 
 
 
@@ -25,8 +26,11 @@ class GetCaptcha {
             imgcaptcha.src = "data:image/png;base64," + dataimage;
         }
 }
+//reload captcha agin ---------------------->
 const getcaptcha = new GetCaptcha();
-
+reload.addEventListener("click",()=>{
+    getcaptcha.loadimage();
+})
 
 
     getcaptcha.loadimage();
@@ -46,17 +50,22 @@ class Login {
     async  Do_loginuser(usermobile, userpass, captcha) {
         
         let response = await this.call_loginuser(usermobile, userpass, captcha)
+        
         if (response.Mid > 0) {
-            localStorage.setItem("token", response.Mid)
-            localStorage.setItem('id',response.ENTITYID);
+            
+            localStorage.setItem("userInfo", JSON.stringify(response))
+            
             window.location.replace('../../admin/index.html')
         }else if(response.Mid == 0)
         {
-            $('#validusermobile').html('رمز عبور اشتباه است ')
+            $('#validusermobile').html('شماره موبایل یا رمز عبور اشتباه است !')
 
         }else  if(response.Mid == -1)
         {
-            $('#validusermobile').html('کد کپچا اشتباه است ')
+            $('#validusermobile').html('کد کپچا اشتباه است ! ')
+        }else  if(response.Mid == -2)
+        {
+            $('#validusermobile').html('کاربری با این شماره ثبت نشده است!')
         }
     }
 }

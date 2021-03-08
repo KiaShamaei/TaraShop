@@ -48,7 +48,8 @@ embed {
 
 input[type=text], textarea {
   outline: none;
-  border-radius: 0; }
+  border-radius: 0;
+  direction: rtl; }
 
 * {
   box-sizing: border-box; }
@@ -114,6 +115,9 @@ body {
   font-family: "PYekan";
   text-align: right;
   font-family: "PYekan" !important; }
+
+.hide {
+  display: none; }
 
 .mainSignin {
   max-height: 65%;
@@ -260,7 +264,7 @@ body {
 .passIcon2 {
   position: absolute;
   top: 51px;
-  left: 232px;
+  left: 380px;
   color: #a0a0a0; }
 
 .inputcaptcha {

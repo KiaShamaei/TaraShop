@@ -28,6 +28,10 @@ $(document).ready(function () {
         const showmessage = $("#validMobile");
         IsIranPhone($(this), showmessage)
     })
+const reload = document.getElementById("repeatCaptcha");
+reload.addEventListener("click",()=>{
+    loadimage();
+})
 
 
 });
