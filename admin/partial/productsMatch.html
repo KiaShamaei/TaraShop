@@ -14,16 +14,21 @@
         <div id="data-container" class="w-100"></div>
     </div>
     <div class="col-md-10">
-        <div id="pagination" class="d-flex justify-content-center">
+        <ul id="pagination" class="d-flex justify-content-center" dir="rtl">
             <li class="page-item">
                 <button class="page-link "  id="previousPage">
                     <span aria-hidden="true">&#10096;</span>
                     <span class="sr-only">Previous</span>
                 </button>
             </li>
-            <li class="page-item"><button class="page-link  page-link-active" data-page="1" >1</button></li>
-            <li class="page-item"><button class="page-link "  data-page="2" >2</button></li>
-            <li class="page-item"><button class="page-link "  data-page="3" >3</button></li>
+            <ul  id="pageBtn" class="d-flex justify-content-center">
+                
+                    <!-- <li class="page-item"><button class="page-link page-btn  page-link-active" data-page="1" >1</button></li>
+                    <li class="page-item"><button class="page-link page-btn"  data-page="2" >2</button></li>
+                    <li class="page-item"><button class="page-link page-btn"  data-page="3" >3</button></li> -->
+            
+            </ul>
+            
             <li class="page-item" >
                 <button class="page-link page-link-2" id="nextPage">
                     <span aria-hidden="true">&#10097;</span>
@@ -31,7 +36,7 @@
                 </button>
             </li>
 
-        </div>
+        </ul>
     </div>
 
 

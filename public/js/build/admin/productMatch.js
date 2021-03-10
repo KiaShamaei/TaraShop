@@ -23,7 +23,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 $(document).ready(function () {
   var dataHtml = '';
   var pageSize = 10;
-  var currentPageParam = 0;
+  var currentPageParam = 0; // const pageBtn = document.getElementById("pageBtn");
 
   var paginationEl = _toConsumableArray(document.querySelectorAll(".page-link"));
 
@@ -112,8 +112,6 @@ $(document).ready(function () {
     _createClass(View, [{
       key: "whoisActive",
       value: function whoisActive(currentPage, countpage) {
-        debugger;
-
         switch (currentPage) {
           case "1":
             pervBtn.disabled = true;
@@ -133,13 +131,38 @@ $(document).ready(function () {
         }
       }
     }, {
-      key: "changePaginationByNext",
-      value: function changePaginationByNext() {}
+      key: "makeFirstPaginationBtn",
+      value: function makeFirstPaginationBtn(sign) {
+        if (sign <= 1) {
+          pageBtn.innerHTML = "<li class=\"page-item\"><button class=\"page-link page-link-active \" data-page=\"1\" >1</button></li>";
+        } else if (sign == 2) {
+          pageBtn.innerHTML = "<li class=\"page-item\"><button class=\"page-link page-link-active \" data-page=\"1\" >1</button></li>\n        <li class=\"page-item\"><button class=\"page-link \"  data-page=\"2\" >2</button></li>";
+        } else if (sign == 3) {
+          pageBtn.innerHTML = "<li class=\"page-item\"><button class=\"page-link page-link-active \" data-page=\"1\" >1</button></li>\n            <li class=\"page-item\"><button class=\"page-link \"  data-page=\"2\" >2</button></li>\n            <li class=\"page-item\"><button class=\"page-link \"  data-page=\"3\" >3</button></li>";
+        }
+      }
     }, {
       key: "makeList",
-      value: function makeList(items) {
-        debugger;
+      value: function makeList(items, num) {
         var pagseCount = Math.ceil(items.count / pageSize);
+        if (num == 1) this.makeFirstPaginationBtn(pagseCount);
+
+        var pageBtn = _toConsumableArray(document.querySelectorAll(".page-link"));
+
+        pageBtn.forEach(function (e, i) {
+          debugger;
+
+          if (i == 0) {
+            e.addEventListener("click", function () {
+              view.do_makeList(currentPageParam + 1);
+            });
+          } else if (i == pageBtn.length) {
+            view.do_makeList(currentPageParam - 1);
+          } else {
+            currentPageParam = num;
+            view.do_makeList(currentPageParam);
+          }
+        });
         this.whoisActive(items.currentpage, pagseCount);
         dataHtml = "";
         items.data.forEach(function (item) {
@@ -150,7 +173,7 @@ $(document).ready(function () {
       key: "do_makeList",
       value: function do_makeList(num) {
         Getproduct.do_call_getproducttemp(num, pageSize).then(function (items) {
-          view.makeList(items);
+          view.makeList(items, num);
           currentPageParam = parseInt(items.currentpage);
           dataContainer.innerHTML = "";
           dataContainer.innerHTML = dataHtml;
@@ -169,6 +192,7 @@ $(document).ready(function () {
     _createClass(Pagination, [{
       key: "changePagination",
       value: function changePagination(e) {
+        debugger;
         var activepage = document.querySelector('.page-link-active');
         activepage.classList.remove('page-link-active');
         e.classList.add("page-link-active");
@@ -181,17 +205,10 @@ $(document).ready(function () {
 
   var view = new View();
   var pagination = new Pagination();
-  view.do_makeList(1);
-  paginationEl.forEach(function (item) {
-    item.addEventListener('click', function (e) {
-      e.preventDefault();
-      pagination.changePagination(e.target);
-    });
-  });
-  nexttBtn.addEventListener("click", function () {
-    view.do_makeList(currentPageParam + 1);
-  });
-  pervBtn.addEventListener("click", function () {
-    view.do_makeList(currentPageParam - 1);
-  });
+  view.do_makeList(1); // nexttBtn.addEventListener("click", ()=>{
+  // view.do_makeList(currentPageParam + 1)
+  // })
+  // pervBtn.addEventListener("click", ()=>{
+  //     view.do_makeList(currentPageParam - 1)
+  //     })
 });

@@ -3,7 +3,7 @@ $(document).ready(function(){
 let dataHtml = '';
 const pageSize = 10;
 let currentPageParam = 0;
-
+// const pageBtn = document.getElementById("pageBtn");
 const paginationEl =[...document.querySelectorAll(".page-link")]
 const pervBtn = document.getElementById('previousPage');
 const nexttBtn = document.getElementById('nextPage')
@@ -28,7 +28,7 @@ class Getproduct {
 
 class View {
     whoisActive(currentPage , countpage){
-        debugger;
+        
         switch (currentPage){
             case "1" : pervBtn.disabled=true;
             break; 
@@ -38,11 +38,45 @@ class View {
         }
 
     }
-    changePaginationByNext(){}
-    makeList(items){
-        debugger;
-        let pagseCount = Math.ceil(items.count/pageSize)
-        this.whoisActive(items.currentpage,pagseCount)
+    makeFirstPaginationBtn(sign){
+        
+        if(sign <= 1)
+        {
+        pageBtn.innerHTML  = `<li class="page-item"><button class="page-link page-link-active " data-page="1" >1</button></li>`;
+        }
+        else if(sign ==2){
+        pageBtn.innerHTML  = `<li class="page-item"><button class="page-link page-link-active " data-page="1" >1</button></li>
+        <li class="page-item"><button class="page-link "  data-page="2" >2</button></li>`;
+        }
+        else if (sign == 3){
+            pageBtn.innerHTML = `<li class="page-item"><button class="page-link page-link-active " data-page="1" >1</button></li>
+            <li class="page-item"><button class="page-link "  data-page="2" >2</button></li>
+            <li class="page-item"><button class="page-link "  data-page="3" >3</button></li>`;
+        }
+      
+
+
+    }
+    makeList(items,num){
+        
+        let pagseCount = Math.ceil(items.count/pageSize);
+        if(num==1)this.makeFirstPaginationBtn(pagseCount);
+        const pageBtn =[...document.querySelectorAll(".page-link")];
+        pageBtn.forEach((e,i)=>{
+            debugger;
+            if(i==0){
+            e.addEventListener("click", ()=>{
+                view.do_makeList(currentPageParam + 1)
+            })
+            }else if(i==pageBtn.length){
+                view.do_makeList(currentPageParam - 1)
+
+            }else {
+                currentPageParam = num;
+                view.do_makeList(currentPageParam)
+            }
+        })
+        this.whoisActive(items.currentpage,pagseCount);
         
         dataHtml="";
         items.data.forEach(item => {
@@ -63,7 +97,7 @@ class View {
 
     do_makeList(num){
         Getproduct.do_call_getproducttemp(num,pageSize).then((items) => {
-            view.makeList(items);
+            view.makeList(items, num);
             currentPageParam =parseInt(items.currentpage);
             dataContainer.innerHTML ="";
             dataContainer.innerHTML = dataHtml;
@@ -74,6 +108,7 @@ class View {
     }
 class Pagination {
     changePagination(e){
+        debugger;
         const activepage = document.querySelector('.page-link-active');
         activepage.classList.remove('page-link-active');
         e.classList.add("page-link-active");
@@ -86,19 +121,13 @@ const view = new View();
 const pagination = new Pagination();
 view.do_makeList(1);
 
-paginationEl.forEach(item=>{
-    
-    item.addEventListener('click',(e)=>{
-        e.preventDefault();
-        pagination.changePagination(e.target);  
-    })
-})
-nexttBtn.addEventListener("click", ()=>{
-view.do_makeList(currentPageParam + 1)
-})
-pervBtn.addEventListener("click", ()=>{
-    view.do_makeList(currentPageParam - 1)
-    })
+
+// nexttBtn.addEventListener("click", ()=>{
+// view.do_makeList(currentPageParam + 1)
+// })
+// pervBtn.addEventListener("click", ()=>{
+//     view.do_makeList(currentPageParam - 1)
+//     })
     
 })
 
