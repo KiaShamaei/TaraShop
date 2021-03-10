@@ -9,8 +9,6 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 $(document).ready(function () {
-  var container = $('#pagination');
-  var getData = '';
   var productIdTemp = localStorage.getItem("productTempId");
   var name = document.getElementById('productTitle');
   var productCat = document.getElementById('productCat');
@@ -130,21 +128,7 @@ $(document).ready(function () {
       }
     }, {
       key: "showMatchSelect",
-      value: function showMatchSelect(e) {
-        getData = e;
-        container.pagination({
-          dataSource: getData,
-          pageSize: 9,
-          showGoInput: true,
-          showGoButton: true,
-          callback: function callback(data, pagination) {
-            var htmlLiketemp = '';
-            $.each(data, function (index, item) {
-              htmlLiketemp += " <div class=\"col-4\">\n                         <div class=\"card cardtemp p-3 semiMatch \" id=".concat(item.PRODUCT_ID, " data-matched=").concat(nodeSelected == item.PRODUCT_ID ? "true" : "false", ">\n                             <img class=\"card-img-top\" src=").concat(item.IMAGE_URL, " alt=\"Card image cap\">\n                                    \n                             <div class=\"card-body\">\n                               <h5 class=\"card-title\">").concat(item.PRODUCT_NAME, "</h5>\n                               <p class=\"card-text\">\u062A\u0648\u0636\u06CC\u062D \u0645\u062D\u0635\u0648\u0644 :").concat(item.DESCRIPTION, " </p>\n                               <p class=\"card-text\">\u06A9\u062F \u0645\u062D\u0635\u0648\u0644  :").concat(item.PRODUCT_CODE, " </p>\n                               <span class=\"badge badge-warning d-none matchSign\" id=span").concat(item.PRODUCT_ID, ">\u0627\u0646\u062A\u062E\u0627\u0628 \u0634\u062F\u0647 \u062C\u0647\u062A \u0627\u062F\u063A\u0627\u0645 </span>\n                               <button class=\"J-paginationjs-go-button matchButton\" data-toggle=\"modal\" data-target=\"#matchModal\"  data-matchId =").concat(item.PRODUCT_ID, " >\u0627\u062F\u063A\u0627\u0645</buttno>\n                                      \n                               </div>\n                          </div>\n                        </div>");
-            });
-            $("#data-container").html(htmlLiketemp);
-          }
-        });
+      value: function showMatchSelect() {
         var listOfProduct = document.querySelectorAll('.semiMatch');
         listOfProduct.forEach(function (item) {
           if (item.dataset.matched == "true") {
@@ -250,8 +234,11 @@ $(document).ready(function () {
     nodeSelected = e[0].IS_MATCHING;
   });
   GetData.call_getproductmatchbycategoryid(productIdTemp).then(function (e) {
-    getData = e;
-    View.showMatchSelect(getData);
+    e.forEach(function (item) {
+      htmlLiketemp += " <div class=\"col-4\">\n            <div class=\"card cardtemp p-3 semiMatch \" id=".concat(item.PRODUCT_ID, " data-matched=").concat(nodeSelected == item.PRODUCT_ID ? "true" : "false", ">\n                <img class=\"card-img-top\" src=").concat(item.IMAGE_URL, " alt=\"Card image cap\">\n                \n                <div class=\"card-body\">\n                  <h5 class=\"card-title\">").concat(item.PRODUCT_NAME, "</h5>\n                  <p class=\"card-text\">\u062A\u0648\u0636\u06CC\u062D \u0645\u062D\u0635\u0648\u0644 :").concat(item.DESCRIPTION, " </p>\n                  <p class=\"card-text\">\u06A9\u062F \u0645\u062D\u0635\u0648\u0644  :").concat(item.PRODUCT_CODE, " </p>\n                  <span class=\"badge badge-warning d-none matchSign\" id=span").concat(item.PRODUCT_ID, ">\u0627\u0646\u062A\u062E\u0627\u0628 \u0634\u062F\u0647 \u062C\u0647\u062A \u0627\u062F\u063A\u0627\u0645 </span>\n                  <button class=\"J-paginationjs-go-button matchButton\" data-toggle=\"modal\" data-target=\"#matchModal\"  data-matchId =").concat(item.PRODUCT_ID, " >\u0627\u062F\u063A\u0627\u0645</buttno>\n                  \n                  </div>\n              </div>\n           </div>");
+    });
+    productTempLike.innerHTML = htmlLiketemp;
+    matchProductlist = e;
   }).then(function () {
     var matchButton = document.querySelectorAll(".matchButton");
     matchButton.forEach(function (item) {
@@ -260,12 +247,12 @@ $(document).ready(function () {
       });
     }); //if select match product is exist --- this part show if is selected match is exist             
 
-    View.showMatchSelect(getData);
+    View.showMatchSelect();
   }).then(function () {
     //accept match is id for modal in root of admin
     document.getElementById('acceptmatch').addEventListener('click', function (e) {
       nodeSelected = View.ChangeMatchSelected(matchselected);
-      View.showMatchSelect(getData);
+      View.showMatchSelect();
     });
   }).then(function () {
     var matchproductBtn = document.getElementById("matchProduct");

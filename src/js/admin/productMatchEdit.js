@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    let container = $('#pagination');
-    let getData = '';
     const productIdTemp = localStorage.getItem("productTempId");
     const name = document.getElementById('productTitle');
     const productCat = document.getElementById('productCat');
@@ -52,35 +50,7 @@ $(document).ready(function () {
       
               
         }
-        static showMatchSelect (e){
-            getData = e;
-            container.pagination({
-                dataSource: getData,
-                pageSize: 9,
-                showGoInput: true,
-                showGoButton: true,
-                callback: function (data, pagination) {
-                    var htmlLiketemp = '';
-                    $.each(data, function (index, item) {
-        
-                        htmlLiketemp += ` <div class="col-4">
-                         <div class="card cardtemp p-3 semiMatch " id=${item.PRODUCT_ID} data-matched=${(nodeSelected==item.PRODUCT_ID)?"true":"false"}>
-                             <img class="card-img-top" src=${item.IMAGE_URL} alt="Card image cap">
-                                    
-                             <div class="card-body">
-                               <h5 class="card-title">${item.PRODUCT_NAME}</h5>
-                               <p class="card-text">توضیح محصول :${item.DESCRIPTION} </p>
-                               <p class="card-text">کد محصول  :${item.PRODUCT_CODE} </p>
-                               <span class="badge badge-warning d-none matchSign" id=span${item.PRODUCT_ID}>انتخاب شده جهت ادغام </span>
-                               <button class="J-paginationjs-go-button matchButton" data-toggle="modal" data-target="#matchModal"  data-matchId =${item.PRODUCT_ID} >ادغام</buttno>
-                                      
-                               </div>
-                          </div>
-                        </div>`;
-                    });
-                    $("#data-container").html(htmlLiketemp);        
-                }
-            })
+        static showMatchSelect (){
             
             const listOfProduct = document.querySelectorAll('.semiMatch') ;
             
@@ -129,9 +99,25 @@ $(document).ready(function () {
         nodeSelected=e[0].IS_MATCHING;
     })
     GetData.call_getproductmatchbycategoryid(productIdTemp).then((e)=>{
-        getData=e
-
-     View.showMatchSelect(getData);
+     
+        e.forEach(item => {
+            htmlLiketemp += ` <div class="col-4">
+            <div class="card cardtemp p-3 semiMatch " id=${item.PRODUCT_ID} data-matched=${(nodeSelected==item.PRODUCT_ID)?"true":"false"}>
+                <img class="card-img-top" src=${item.IMAGE_URL} alt="Card image cap">
+                
+                <div class="card-body">
+                  <h5 class="card-title">${item.PRODUCT_NAME}</h5>
+                  <p class="card-text">توضیح محصول :${item.DESCRIPTION} </p>
+                  <p class="card-text">کد محصول  :${item.PRODUCT_CODE} </p>
+                  <span class="badge badge-warning d-none matchSign" id=span${item.PRODUCT_ID}>انتخاب شده جهت ادغام </span>
+                  <button class="J-paginationjs-go-button matchButton" data-toggle="modal" data-target="#matchModal"  data-matchId =${item.PRODUCT_ID} >ادغام</buttno>
+                  
+                  </div>
+              </div>
+           </div>`;
+        });
+        productTempLike.innerHTML= htmlLiketemp
+       matchProductlist= e;
     }).then(()=>{
             const matchButton = document.querySelectorAll(".matchButton")
             matchButton.forEach(item=>{
@@ -142,12 +128,12 @@ $(document).ready(function () {
                 
             })
 //if select match product is exist --- this part show if is selected match is exist             
-            View.showMatchSelect(getData);
+            View.showMatchSelect();
        }).then(()=>{
 //accept match is id for modal in root of admin
         document.getElementById('acceptmatch').addEventListener('click',(e)=>{
             nodeSelected = View.ChangeMatchSelected(matchselected);
-            View.showMatchSelect(getData);
+            View.showMatchSelect();
         })
      }).then(()=>{
         const matchproductBtn= document.getElementById("matchProduct")
